@@ -1,0 +1,5 @@
+.venv
+.venv3
+.pylintrc
+geckodriver.log
+.DS_Store
