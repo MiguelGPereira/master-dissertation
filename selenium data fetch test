@@ -42,19 +42,29 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
+	<td>click</td>
 	<td>id=wt3_wtWorkspaceMode_wt1_wtbtnMoreData</td>
 	<td></td>
 </tr>
 <tr>
+	<td>pause</td>
+	<td>10000</td>
+	<td></td>
+</tr>
+<tr>
 	<td>click</td>
 	<td>id=Site_Widgets_wt26_block_wtPopupContent_Site_Widgets_wt8_block_wtSearch_Theme_CB</td>
 	<td></td>
 </tr>
 <tr>
-	<td>selectAndWait</td>
+	<td>select</td>
 	<td>id=Site_Widgets_wt26_block_wtPopupContent_Site_Widgets_wt8_block_wtSearch_Theme_CB</td>
-	<td>label=Justiça e Segurança</td>
+	<td>label=Ambiente, Energia e Território</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>3000</td>
+	<td></td>
 </tr>
 <tr>
 	<td>click</td>
@@ -62,9 +72,14 @@
 	<td></td>
 </tr>
 <tr>
-	<td>selectAndWait</td>
+	<td>select</td>
 	<td>id=Site_Widgets_wt26_block_wtPopupContent_Site_Widgets_wt8_block_wtSearch_SubTheme_CB</td>
-	<td>label=Crimes</td>
+	<td>label=Despesas</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>3000</td>
+	<td></td>
 </tr>
 <tr>
 	<td>click</td>
@@ -72,21 +87,30 @@
 	<td></td>
 </tr>
 <tr>
-	<td>selectAndWait</td>
+	<td>select</td>
 	<td>id=Site_Widgets_wt26_block_wtPopupContent_Site_Widgets_wt8_block_wtSearch_Micro_CB</td>
-	<td>label=Registados por categoria</td>
+	<td>label=Per capita</td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
+	<td>pause</td>
+	<td>3000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
 	<td>id=Site_Widgets_wt26_block_wtPopupContent_Site_Widgets_wt8_block_wt125</td>
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
+	<td>pause</td>
+	<td>45000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
 	<td>id=wt3_wtWorkspaceMode_wt1_wt139</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
