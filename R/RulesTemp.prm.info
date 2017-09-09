@@ -1,0 +1,10 @@
+> caren caren_temp.bas  0.01  0.7  -null?  -classL1  -HL1  -pRulesTemp  -ocsRulesTemp  -RANK0,1  -nodef  -RS4  -Att  -s,  
+
+ Label Ranking Model 
+
+NumFreqItems = 82 in the dataset RulesTemp.prm with minsup = 0.01 
+NumOfRules = 110403 in a dataset with 309 transactions 
+NumOfClasses = 24  
+
+Total Time spent = 0 hrs 3 mts 32 secs
+

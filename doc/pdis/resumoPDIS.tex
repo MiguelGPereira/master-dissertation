@@ -1,0 +1,62 @@
+\documentclass[11pt,a4paper]{article}
+
+%\usepackage[portuguese]{babel}  % if you want portuguese
+\usepackage[utf8]{inputenc}           % 8 bits UTF8
+%\usepackage[latin1]{inputenc}     %  OR 8 bits latin1
+\usepackage{parskip}            % no indentation on paragraphs
+\usepackage{url}                % URLs
+\usepackage{lipsum}             % loren dummy text
+
+%% margins
+\RequirePackage[outer=25mm,inner=30mm,vmargin=16mm,includehead,includefoot,headheight=15pt]{geometry}
+
+%% headers and footers
+\usepackage{fancyhdr}           % page headers
+\pagestyle{fancy}
+\lhead{}\chead{}\rhead{PDIS 2015/2016 Sem 1}
+%\lfoot{}\cfoot{}\rfoot{Page \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+%\newcommand\Small{\fontsize{9}{9.2}\selectfont}
+%\newcommand*\LSTfont{\Small\ttfamily\SetTracking{encoding=*}{-60}\lsstyle}
+
+\pagenumbering{gobble}
+
+%% some more macros
+\newcommand{\dummy}[1]{$<$#1$>$}
+\newcommand{\titles}[2]{\noindent\textbf{#1:} #2\\[2mm]}
+
+%% LaTeX exceptions
+%\hyphenation{In-fra-struc-ture}
+
+\begin{document}
+
+\titles{Title}{Label Ranking for prediction Elections}
+\titles{Author}{Miguel Jorge Gonçalves Pereira}
+\titles{Supervision}{Carlos Soares; Cláudio Sá}
+\titles{Date}{\today}
+
+\section*{Abstract}
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, plac- erat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu lib ero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Pellentesque habi- tant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eu tellus sit amet tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra ac, nunc. Praesent eget sem vel leo ultrices bib endum. Aenean faucibus. Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac, nulla. Curabitur auctor semp er nulla. Donec varius orci eget risus. Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam. Duis eget orci sit amet orci dignissim rutrum.
+
+\section*{Pontos a abordar}
+
+\begin{itemize}  
+	\item Contexto
+	\item Problema
+	\item Dificuldades?(why is the problem a problem)
+	\item Solução Proposta
+	\item Avaliação da solução(medidas)
+	\item Resultados
+	\item Impacto
+\end{itemize}
+
+\nocite{*}  % to include references which were not cited
+
+%% the references using BibTeX
+\bibliographystyle{unsrt}
+\bibliography{resumoBib}
+
+\end{document}
