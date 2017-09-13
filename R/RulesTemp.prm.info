@@ -2,9 +2,9 @@
 
  Label Ranking Model 
 
-NumFreqItems = 82 in the dataset RulesTemp.prm with minsup = 0.01 
-NumOfRules = 110403 in a dataset with 309 transactions 
+NumFreqItems = 70 in the dataset RulesTemp.prm with minsup = 0.01 
+NumOfRules = 192741 in a dataset with 309 transactions 
 NumOfClasses = 24  
 
-Total Time spent = 0 hrs 3 mts 32 secs
+Total Time spent = 0 hrs 0 mts 20 secs
 
