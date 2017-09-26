@@ -50,6 +50,17 @@ crank <- function(rulz, xs, ys, std, m2, mt)
 # --------------------------------------------------------------------------
 # --------------------------------------------------------------------------
 
+goodmank <- function(x,y)
+{
+  a <- outer(x,x,function(u,v) sign(v-u))
+  b <- outer(y,y,function(u,v) sign(v-u))
+  a[a==0] <- NA
+  b[b==0] <- NA
+  comp <- a==b
+  diag(comp) <- NA
+  return((sum(comp, na.rm = TRUE)-sum(!comp, na.rm = TRUE))/sum((comp)>=0, na.rm = T))
+}
+
 crankPairwise <- function(rulz, xs, ys, std, m2, mt)
 {
   #Order the rules by "confidence" and "support"
@@ -64,12 +75,15 @@ crankPairwise <- function(rulz, xs, ys, std, m2, mt)
     i <- 1:mt
   }
   
+  # TO DELETE
+  # xs <- xs[1:25,]
+  # ys <- ys[1:25,]
+  # print(xs)
+  # print(ys)
   ##Match rules whith examples
-  rs <- apply(xs[1:2,], 1, function(row)
+  rs <- apply(xs, 1, function(row)
   {
-    cat("Row = ", row, fill = T) 
     a <- sapply(rulz, function(l) { all(l$a %in% row) })
-    print(which(a))
     if (any(a))
     {
       # fetch the ii rows of the the mt best rules
@@ -78,18 +92,26 @@ crankPairwise <- function(rulz, xs, ys, std, m2, mt)
       } else {
         ii <- i
       }
-      
-      appliedRules <- sapply(rulz[a], function(line){
+      #browser()
+      appliedRules <- sapply(rulz[a][1], function(line){
         pairsMatrix <- line$c
         pairsRanking <- apply(pairsMatrix, 1, function(line){ sum(line, na.rm = TRUE) })
       })
       appliedRules <- t(appliedRules)
-      
+      normalizer <- colSums(abs(appliedRules))
       aggregatedRules <- apply(appliedRules, 2, function(column){ sum(column, na.rm = TRUE) })
+      normalizedRules <- aggregatedRules/normalizer
+      aggregatedRules <- normalizedRules
       
-      ranking <- rank(-aggregatedRules, na.last = TRUE)
-      rt <- ranking
+      aggregatedRules[is.nan(aggregatedRules)] <- NA
+      aggregatedRules <- -aggregatedRules
+      rt <- aggregatedRules
       
+      # ranking <- rank(-aggregatedRules, na.last = TRUE)
+      # rt <- ranking
+      # print(rulz[a][1])
+      # print(rt)
+      # 
       # browser()
       
       if (length(unique(rt))==1 )

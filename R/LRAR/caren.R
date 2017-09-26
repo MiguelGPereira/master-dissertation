@@ -68,7 +68,7 @@ aflrC7 <- function(disc.x, y, msup = 1, mconf = 70, mlift = 0, mimp = 0, theta =
 # --------------------------------------------------------------------------
 
 #Pairwise 
-aflrC7Pairwise <- function(disc.x, y, msup = 1, mconf = 70, mlift = 0, mimp = 0, theta = 0, maxpairs = 0, Xmx = "2000M")
+aflrC7Pairwise <- function(disc.x, y, msup = 1, mconf = 70, mlift = 0, mimp = 0, theta = 0, maxpairs = maxPairs, Xmx = "2000M")
 {
   colnames(y) <- paste("L", 1:ncol(y), sep = "")
   
@@ -90,6 +90,28 @@ aflrC7Pairwise <- function(disc.x, y, msup = 1, mconf = 70, mlift = 0, mimp = 0,
     r <- r[order(sapply(r[,"Ant"], length)),]
     
     res <-  list()
+    #idx <- apply(DISC$Disc.data, 2, function(dc) any(dc==2, na.rm=TRUE))
+    #DISC$Disc.data <- DISC$Disc.data[,idx, drop = FALSE]
+    
+    # clean lines with more than 1 pair
+    # ind <- sapply(r$Cons, function(pairs){ !grepl(",", pairs) })
+    # r <- r[ind,] 
+    
+    # ind <- apply(r, 1, function(line){
+    #   # check if consequent (ex L1>L2, L3>L5) is better specialization
+    #   antecedent <- line$Ant
+    #   consequent <- line$Cons
+    #   basePairs <- unlist( strsplit(as.character(consequent), ","))
+    #   basePairs <- sapply(basePairs, function(pair) gsub("[L|| ]","",pair) , USE.NAMES = FALSE)
+    #   idxAnt <- which(r$Ant == antecedent)
+    #   idxCons <- sapply(r[idxAnt,]$Cons, function(cons){
+    #     pairs <- unlist( strsplit(as.character(cons), ","))
+    #     pairs <- sapply(pairs, function(pair) gsub("[L|| ]","",pair) )
+    #     print(pairs)
+    #   })
+    #   print(sum(idxCons))
+    #   browser()
+    # })
     
     apply(r, 1, function(rr)
     {
@@ -111,8 +133,9 @@ aflrC7Pairwise <- function(disc.x, y, msup = 1, mconf = 70, mlift = 0, mimp = 0,
             
             first <- pair[1]
             second <- pair[2]
-            pairsMatrix[first, second] <- 1
-            pairsMatrix[second, first] <- -1
+            # following 1 & -1 inverted because of caren
+            pairsMatrix[first, second] <- -1
+            pairsMatrix[second, first] <- 1
             pairsMatrix <<- pairsMatrix
           })
           pairsRanking <- apply(pairsMatrix, 1, function(line){ sum(line, na.rm = TRUE) })
