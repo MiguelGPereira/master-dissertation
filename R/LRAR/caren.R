@@ -68,7 +68,8 @@ aflrC7 <- function(disc.x, y, msup = 1, mconf = 70, mlift = 0, mimp = 0, theta =
 # --------------------------------------------------------------------------
 
 #Pairwise 
-aflrC7Pairwise <- function(disc.x, y, msup = 1, mconf = 70, mlift = 0, mimp = 0, theta = 0, maxpairs = maxPairs, Xmx = "2000M")
+aflrC7Pairwise <- function(disc.x, y, msup = 1, mconf = 70, mlift = 0, mimp = 0, theta = 0, 
+                           maxpairs = maxPairs, Xmx = "2000M", confThreshold = 0.05)
 {
   colnames(y) <- paste("L", 1:ncol(y), sep = "")
   
@@ -89,30 +90,35 @@ aflrC7Pairwise <- function(disc.x, y, msup = 1, mconf = 70, mlift = 0, mimp = 0,
     #set new order
     r <- r[order(sapply(r[,"Ant"], length)),]
     
-    res <-  list()
-    #idx <- apply(DISC$Disc.data, 2, function(dc) any(dc==2, na.rm=TRUE))
-    #DISC$Disc.data <- DISC$Disc.data[,idx, drop = FALSE]
-    
     # clean lines with more than 1 pair
     # ind <- sapply(r$Cons, function(pairs){ !grepl(",", pairs) })
     # r <- r[ind,] 
     
-    # ind <- apply(r, 1, function(line){
-    #   # check if consequent (ex L1>L2, L3>L5) is better specialization
-    #   antecedent <- line$Ant
-    #   consequent <- line$Cons
-    #   basePairs <- unlist( strsplit(as.character(consequent), ","))
-    #   basePairs <- sapply(basePairs, function(pair) gsub("[L|| ]","",pair) , USE.NAMES = FALSE)
-    #   idxAnt <- which(r$Ant == antecedent)
-    #   idxCons <- sapply(r[idxAnt,]$Cons, function(cons){
-    #     pairs <- unlist( strsplit(as.character(cons), ","))
-    #     pairs <- sapply(pairs, function(pair) gsub("[L|| ]","",pair) )
-    #     print(pairs)
+    # r <- r[order(r[,"Cons"]),]
+    # idx <- c(1:nrow(r))
+    # idx <- sapply(idx, function(t) TRUE)
+    # # browse each rule
+    # for(i in 1:nrow(r)){
+    #   print(paste("%",formatC((i/nrow(r))*100,digits=2, format="f"), "(",i,"/",nrow(r),")"))
+    #   antecedent <- r[i,]$Ant
+    #   consequent <- unlist( strsplit(as.character(r[i,]$Cons), ","))
+    #   confidence <- r[i,]$Conf
+    #   # browse each previous rule we are trying to dismiss (previous pruning)
+    #   # check if conficence is lower on inside the threshold
+    #   # check if the antecedent is the same
+    #   # check if the consequent has the length to be a possible specialization of the test
+    #   # check if it actually is specialization
+    #   prev <- which(idx[1:i])
+    #   id <- which( (as.character(r[prev,]$Ant) == as.character(antecedent)) & (r[prev,]$Conf<confidence | (r$Conf-confidence<confThreshold)))
+    #   filter <- sapply(r[prev,][id,]$Cons, function(testConsequent){
+    #     testConsequent <- unlist(strsplit(as.character(testConsequent), ","))
+    #     (length(testConsequent)<length(consequent)) & (length(which(consequent %in% testConsequent)) == length(testConsequent))
     #   })
-    #   print(sum(idxCons))
-    #   browser()
-    # })
+    #   idx[prev][id] <- !filter
+    # }
+    # r <- r[idx,]
     
+    res <-  list()
     apply(r, 1, function(rr)
     {
       if (length(rr$Ant)>0 && !is.na(rr$Ant)) {
@@ -121,7 +127,7 @@ aflrC7Pairwise <- function(disc.x, y, msup = 1, mconf = 70, mlift = 0, mimp = 0,
         
         if (length(grep("null", as.character(rr$Cons)))==0){
           
-          pairsMatrix <- matrix(data=NA,nrow=5,ncol=5)
+          pairsMatrix <- matrix(data=NA,nrow=ncol(y),ncol=ncol(y))
           pairs <- rr$Cons
           pairs <- as.character(pairs)
           pairs <- unlist( strsplit(pairs, ","))

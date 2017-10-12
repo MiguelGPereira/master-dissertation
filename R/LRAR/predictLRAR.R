@@ -24,8 +24,18 @@ crank <- function(rulz, xs, ys, std, m2, mt)
       } else {
         ii <- i
       }
-      
-      rt <- rank( rowMeans( sapply(rulz[a][ii], "[[", "c") ) )
+      #browser()
+      #if is pt
+      if(colnames(xs)[1] == "Residents.Total"){
+        fRul <- sapply(rulz[a][ii], "[[", "c")
+        if(class(fRul)!="list"){
+          rt <- rank( rowMeans( fRul ) )  
+        } else {
+          rt <- rank( rowMeans( t(do.call(rbind,fRul)) ) ) 
+        }
+      } else {
+        rt <- rank( rowMeans( sapply(rulz[a][ii], "[[", "c") ) )  
+      }
       
       if (length(unique(rt))==1 )
       {

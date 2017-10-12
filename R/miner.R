@@ -25,8 +25,8 @@ goodmank <- function(x,y)
 {
   a <- outer(x,x,function(u,v) sign(v-u))
   b <- outer(y,y,function(u,v) sign(v-u))
-  a[a==0] <- NA
-  b[b==0] <- NA
+  #a[a==0] <- NA
+  #b[b==0] <- NA
   comp <- a==b
   diag(comp) <- NA
   return((sum(comp, na.rm = TRUE)-sum(!comp, na.rm = TRUE))/sum((comp)>=0, na.rm = T))
@@ -53,7 +53,9 @@ mineRules<-function(X, Y, is2Years = 0, folds = NULL, Kfolds = 1, xs = NULL, ys 
     
     # discretize TRAIN
     DISC <- mdlp.rank(x, y, method = "kendall")
+    indexesDiscretized <- apply(DISC$Disc.data, 2, function(dc) any(dc==2, na.rm=TRUE))
     
+    # equal frequency
     # indexesDiscretized <- apply(DISC$Disc.data, 2, function(dc) any(dc==2, na.rm=TRUE))
     # discretizedList <- 1:nrow(DISC$Disc.data)
     # chunk2 <- function(x,n) split(x, cut(seq_along(x), n, labels = FALSE))
@@ -74,12 +76,27 @@ mineRules<-function(X, Y, is2Years = 0, folds = NULL, Kfolds = 1, xs = NULL, ys 
     # 
     # DISC$Disc.data[,!indexesDiscretized] <- noDisc
 
-    xd = DISC$Disc.data
-    
+    # equal width
+    if(sum(!indexesDiscretized) > 0){
+      D <- list()
+      nbins <- 4
+      xnd <- as.matrix(x[,!indexesDiscretized])
+      #browser()
+      D$Disc.data <- apply(xnd, 2, discretize, "interval", nbins, 1:nbins)
+      #browser()
+      D$Disc.data <- apply(D$Disc.data, 2, as.integer)
+      D$cutp <- lapply(1:ncol(xnd), function(i){
+        discretize(xnd[,i], "interval", nbins, 1:nbins, onlycuts=TRUE)[-c(1,(nbins+1))]
+      })
+
+      DISC$Disc.data[,!indexesDiscretized] <- D$Disc.data
+      DISC$cutp[!indexesDiscretized] <- D$cutp
+      indexesDiscretized <- apply(DISC$Disc.data, 2, function(dc) any(dc==2, na.rm=TRUE))
+    }
+    #browser()
     #prune columns with no partitions
-    indexesDiscretized <- apply(DISC$Disc.data, 2, function(dc) any(dc==2, na.rm=TRUE))
     DISC$Disc.data <- DISC$Disc.data[,indexesDiscretized, drop = FALSE]
-    
+    #browser()
     if (ncol(DISC$Disc.data) == 0)
     {
       print("Not discretized")
@@ -108,15 +125,16 @@ mineRules<-function(X, Y, is2Years = 0, folds = NULL, Kfolds = 1, xs = NULL, ys 
     xs <-res[[2]] 
     xd <-res[[1]]
     
-    browser()
+    #browser()
     
     # mine LR rules
     if(isPairwise) {
-      rulz <- aflrC7Pairwise(xd, y, msup = minSupport, mconf = minConfidence, mlift = minLift, mimp = minImprovment, theta = 0, Xmx = "2000M")
+      rulz <- aflrC7Pairwise(xd, y, msup = minSupport, mconf = minConfidence, mlift = minLift, mimp = minImprovment, 
+                             theta = 0, Xmx = "2000M", confThreshold = confThreshold)
     } else {
       rulz <- aflrC7(xd, y, msup = minSupport, mconf = minConfidence, mlift = minLift, mimp = minImprovment, theta = 0, Xmx = "2000M")
     }
-    
+    #browser()
     # predict LRARs
     std <- def.rank(y)
     mt <- 0
@@ -126,17 +144,41 @@ mineRules<-function(X, Y, is2Years = 0, folds = NULL, Kfolds = 1, xs = NULL, ys 
       # print(unique(t(yp)))
       # browser()
     } else {
+      #browser()
       yp <- crank(rulz, xs, ys, std, m2, mt)
       # print(unique(t(yp)))
     }
     
     # evaluate rules
-    if(isPairwise){
-      #..
-      
+    if(ys == 0){
       yp <- t(yp)
-      gamma <- mean(sapply(1:nrow(ys), function(j) goodmank(ys[j,], yp[j,])))
+      colnames(yp) <- colnames(y)
+      saveRDS(yp, "predictions.rds")
+      saveRDS(y, "results.rds")
+      print("2017 prediction saved")
+      #browser()
+      print("baseline w/ last year's results")
+      #print(mean(sapply(1:nrow(ys), function(j) cor(ys[j,], baseline, method="kendall"))))
+    } else if(isPairwise){
+      #..
+      #browser()
+      yp <- t(yp)
+      colnames(yp) <- colnames(y)
+      saveRDS(yp, "predictions2013.rds")
+      saveRDS(ys, "results2013.rds")
+      
+      gamma <- mean(sapply(1:nrow(ys), function(j) {
+        # print("ys[j,]")
+        # print(ys[j,])
+        # print("yp[j,]")
+        # print(yp[j,])
+        gm <- goodmank(ys[j,], yp[j,])
+        # print("gm")
+        # print(gm)
+        gm
+      }))
       print(table(sapply(1:nrow(ys), function(j) goodmank(ys[j,], yp[j,]))))
+      print("unique(yp)")
       print(unique(yp))
       #browser()
       tauList[[i]] <- gamma
@@ -145,6 +187,7 @@ mineRules<-function(X, Y, is2Years = 0, folds = NULL, Kfolds = 1, xs = NULL, ys 
       baselineTau <- mean(sapply(1:nrow(ys), function(j) cor(ys[j,], baseline, method="kendall")))
       baselineList[[i]] <- baselineTau
       print(paste("baseline tau=", baselineTau))
+      print(paste("smart baseline",mean(sapply(1:nrow(ys), function(j) cor(y[j,], ys[j,], method="kendall")))))
       if(i == Kfolds){
         print(paste("final gamma=", sum(as.numeric(tauList))/Kfolds))
         print(paste("final baseline gamma=", sum(as.numeric(baselineList))/Kfolds))
@@ -157,6 +200,7 @@ mineRules<-function(X, Y, is2Years = 0, folds = NULL, Kfolds = 1, xs = NULL, ys 
       baselineTau <- mean(sapply(1:nrow(ys), function(j) cor(ys[j,], baseline, method="kendall")))
       baselineList[[i]] <- baselineTau
       print(paste("baseline tau=", baselineTau))
+      print(paste("smart baseline",mean(sapply(1:nrow(ys), function(j) cor(y[j,], ys[j,], method="kendall")))))
       
       if(i == Kfolds){
         print(paste("final tau=", sum(as.numeric(tauList))/Kfolds))
