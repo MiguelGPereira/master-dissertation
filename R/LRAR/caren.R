@@ -119,6 +119,11 @@ aflrC7Pairwise <- function(disc.x, y, msup = 1, mconf = 70, mlift = 0, mimp = 0,
     # r <- r[idx,]
     
     res <-  list()
+    
+    n <- ncol(y)
+    k <- 2
+    maxpairs <- factorial(n)/(factorial(k)*factorial(n-k))
+    
     apply(r, 1, function(rr)
     {
       if (length(rr$Ant)>0 && !is.na(rr$Ant)) {
@@ -150,13 +155,16 @@ aflrC7Pairwise <- function(disc.x, y, msup = 1, mconf = 70, mlift = 0, mimp = 0,
           sup <- round(as.numeric(rr$Sup)*100, 2)
           conf <- round(as.numeric(rr$Conf)*100, 2)
           lift <- round(as.numeric(rr$Lift)*100, 2)
-          
+
+          completeness <- length(pairs)/maxpairs
+            
           res[[length(res)+1]] <<- list(
             a=a,
             c=c,
             sup= sup,
             conf= conf,
-            lift= lift 
+            lift= lift,
+            completeness= completeness
           )
         }
       }

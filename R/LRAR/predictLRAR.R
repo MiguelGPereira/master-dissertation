@@ -71,7 +71,7 @@ goodmank <- function(x,y)
   return((sum(comp, na.rm = TRUE)-sum(!comp, na.rm = TRUE))/sum((comp)>=0, na.rm = T))
 }
 
-crankPairwise <- function(rulz, xs, ys, std, m2, mt)
+crankPairwise <- function(rulz, xs, ys, std, m2, mt, kfold = 0)
 {
   #Order the rules by "confidence" and "support"
   rulz <- rulz[order(-sapply(rulz, "[[" ,"sup" ))]
@@ -91,6 +91,9 @@ crankPairwise <- function(rulz, xs, ys, std, m2, mt)
   # print(xs)
   # print(ys)
   ##Match rules whith examples
+  compList <<- list()
+  compIndex <<- 1
+  defRankCount <<- 0
   rs <- apply(xs, 1, function(row)
   {
     a <- sapply(rulz, function(l) { all(l$a %in% row) })
@@ -108,6 +111,11 @@ crankPairwise <- function(rulz, xs, ys, std, m2, mt)
         pairsRanking <- apply(pairsMatrix, 1, function(line){ sum(line, na.rm = TRUE) })
       })
       appliedRules <- t(appliedRules)
+      
+      compList[[compIndex]] <<- rulz[a][1][[1]]$completeness
+      compIndex <<- compIndex + 1
+      #browser()
+      
       normalizer <- colSums(abs(appliedRules))
       aggregatedRules <- apply(appliedRules, 2, function(column){ sum(column, na.rm = TRUE) })
       normalizedRules <- aggregatedRules/normalizer
@@ -128,14 +136,23 @@ crankPairwise <- function(rulz, xs, ys, std, m2, mt)
       {
         #The method uses the baseline ranking the first rule if the avg ranking is constant
         rt <- -rank(-std)
+        defRankCount <<- defRankCount + 1
       }
     } else
     {
       #NOTE: -rank(-c(1,2,3)) is equivalent to c(1,2,3) 
       rt <- -rank(-std)
+      defRankCount <<- defRankCount + 1
     }
     rt
   })
+  meanCompleteness <- mean(as.numeric(compList))
+  print(paste("completeness",meanCompleteness))
+  completenessList[[kfold]] <<- meanCompleteness
+  
+  percentDefRank <- defRankCount * 1 / nrow(xs)
+  print(paste("def rank % in fold ",percentDefRank))
+  defRankUsageList[[kfold]] <<- percentDefRank
   
   rs
 }
