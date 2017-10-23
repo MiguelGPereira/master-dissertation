@@ -151,7 +151,7 @@ aflrC7Pairwise <- function(disc.x, y, msup = 1, mconf = 70, mlift = 0, mimp = 0,
           })
           pairsRanking <- apply(pairsMatrix, 1, function(line){ sum(line, na.rm = TRUE) })
           c <- pairsMatrix
-          # browser()
+          #browser()
           sup <- round(as.numeric(rr$Sup)*100, 2)
           conf <- round(as.numeric(rr$Conf)*100, 2)
           lift <- round(as.numeric(rr$Lift)*100, 2)
