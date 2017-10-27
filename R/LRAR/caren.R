@@ -85,7 +85,7 @@ aflrC7Pairwise <- function(disc.x, y, msup = 1, mconf = 70, mlift = 0, mimp = 0,
   if (file.exists("caren_temp.bas")) file.remove("caren_temp.bas")
   # Calls caren 
   r <- caren( cbind(disc.x, y), min.sup=msup/100, min.conf=mconf/100, imp = mimp,lift=mlift, class="L1", Xmx = Xmx, Options = opt)
-  
+
   if(nrow(r)>0){
     #set new order
     r <- r[order(sapply(r[,"Ant"], length)),]

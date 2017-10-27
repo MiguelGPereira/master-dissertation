@@ -76,7 +76,7 @@ crankPairwise <- function(rulz, xs, ys, std, m2, mt, kfold = 0)
   #Order the rules by "confidence" and "support"
   rulz <- rulz[order(-sapply(rulz, "[[" ,"sup" ))]
   rulz <- rulz[order(-sapply(rulz, "[[" ,"conf" ))]
-  browser()
+  #browser()
   if (mt==0)
   { 
     i <- TRUE

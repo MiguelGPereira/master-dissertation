@@ -151,9 +151,10 @@ mineRules<-function(X, Y, is2Years = 0, folds = NULL, Kfolds = 1, xs = NULL, ys 
                              theta = 0, Xmx = "2000M", confThreshold = confThreshold)
       if(is.na(rulz)) {
         stop("no rules")
-      } else if (minSupport != 1 && length(rulz) < 5000) {
-        stop("few rules")
-      }
+      } 
+      # else if (minSupport != 1 && length(rulz) < 5000) {
+      #   stop("few rules")
+      # }
     } else {
       rulz <- aflrC7(xd, y, msup = minSupport, mconf = minConfidence, mlift = minLift, mimp = minImprovment, theta = 0, Xmx = "2000M")
     }
@@ -189,6 +190,9 @@ mineRules<-function(X, Y, is2Years = 0, folds = NULL, Kfolds = 1, xs = NULL, ys 
       tauList[[i]] <- gamma
       accuracyList[[i]] <- acc
       rulzList[[i]] <- length(rulz)
+      if (defRankUsageList[[i]] != 0 && minSupport > 1) {
+        stop("non zero def.rank")
+      }
       print(paste("fold", i, ": gamma=", gamma," | completeness=", completenessList[[i]]," | accuracy=", acc," | %defrank=", defRankUsageList[[i]]))
       baseline <- rank(colMeans(y))
       baselineTau <- mean(sapply(1:nrow(ys), function(j) cor(ys[j,], baseline, method="kendall")))
@@ -199,6 +203,8 @@ mineRules<-function(X, Y, is2Years = 0, folds = NULL, Kfolds = 1, xs = NULL, ys 
         title <- paste("############### ",dataset," ###############")
         cat("\n")
         cat(title,"\n")
+        cat("# confidence:",minConfidence,"\n")
+        cat("# max pairs:",maxPairs,"\n")
         cat("# calculated support:",minSupport,"\n")
         cat("#\n")
         cat("# gamma:", round(sum(as.numeric(tauList))/Kfolds, 2),"\n")
