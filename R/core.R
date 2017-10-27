@@ -41,7 +41,7 @@ minImprovment <- 0.01
 #load("portugal2009_2013.RDATA")
 #load("portugal2013_2017.RDATA")
 
-datasets <- list("iris", "glass")
+datasets <- list("authorship","bodyfat","calhousing","cpu-small","elevators","fried","glass","housing","iris","pendigits","segment","stock","vehicle","vowel","wine","wisconsin")
 
 # zz <- file("all.Rout", open = "wt")
 # sink(zz)
