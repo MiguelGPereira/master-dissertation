@@ -28,10 +28,10 @@ isPairwise <- 1
 Kfolds <- 10
 randomSeed <- 1234
 minConfidence <- 70
-baseMinSupport <- 51
+baseMinSupport <- 1
 confThreshold <- 0.05
 minLift <- 0
-minImprovment <- 0.01
+minImprovment <- -1
 
 #load("german2005.RDATA")
 #load("german2009.RDATA")
@@ -41,7 +41,8 @@ minImprovment <- 0.01
 #load("portugal2009_2013.RDATA")
 #load("portugal2013_2017.RDATA")
 
-datasets <- list("authorship","bodyfat","calhousing","cpu-small","elevators","fried","glass","housing","iris","pendigits","segment","stock","vehicle","vowel","wine","wisconsin")
+#datasets <- list("authorship","bodyfat","calhousing","cpu-small","elevators","fried","glass","housing","iris","pendigits","segment","stock","vehicle","vowel","wine","wisconsin")
+datasets <- list("iris")
 
 # zz <- file("all.Rout", open = "wt")
 # sink(zz)
@@ -58,7 +59,9 @@ for(dataset in datasets) {
   X <- x
   Y <- y
 
-  for(mpairs in 1:ncol(Y)){
+  pairsLimit <- if(ncol(Y) < 4) ncol(Y) else 4
+  for(mpairs in 1:pairsLimit){
+
     maxPairs <<- mpairs
     minSupport <<- baseMinSupport
     

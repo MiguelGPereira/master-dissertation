@@ -1,0 +1,344 @@
+###############  iris  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 1 
+#
+# gamma: 0.95 
+# completeness: 0.33 
+# accuracy: 0.97 
+# def.rank: 0 
+# rules: 33 
+#
+# baseline: 0.09 
+######################################
+###############  iris  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 1 
+#
+# gamma: 0.3 
+# completeness: 0.67 
+# accuracy: 0 
+# def.rank: 0 
+# rules: 79 
+#
+# baseline: 0.09 
+###################################### 
+###############  iris  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 1 
+#
+# gamma: 0.96 
+# completeness: 1 
+# accuracy: 0.98 
+# def.rank: 0 
+# rules: 97 
+#
+# baseline: 0.09 
+######################################
+
+###############  bodyfat  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 1 
+#
+# gamma: 0.33 
+# completeness: 0.05 
+# accuracy: 0.67 
+# def.rank: 0 
+# rules: 208 
+#
+# baseline: -0.04 
+######################################### 
+###############  bodyfat  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 1 
+#
+# gamma: -0.08 
+# completeness: 0.09 
+# accuracy: 0.06 
+# def.rank: 0 
+# rules: 1283 
+#
+# baseline: -0.04 
+######################################### 
+###############  bodyfat  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 1 
+#
+# gamma: -0.1 
+# completeness: 0.11 
+# accuracy: 0.1 
+# def.rank: 0 
+# rules: 1646 
+#
+# baseline: -0.05 
+######################################### 
+###############  bodyfat  ############### 
+# confidence: 70 
+# max pairs: 4 
+# calculated support: 1 
+#
+# gamma: -0.15 
+# completeness: 0.12 
+# accuracy: 0.06 
+# def.rank: 0 
+# rules: 1663 
+#
+# baseline: -0.02 
+######################################### 
+
+###############  glass  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 1 
+#
+# gamma: 0.91 
+# completeness: 0.07 
+# accuracy: 0.95 
+# def.rank: 0 
+# rules: 207 
+#
+# baseline: 0.68 
+####################################### 
+###############  glass  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 1 
+#
+# gamma: 0.3 
+# completeness: 0.13 
+# accuracy: 0.11 
+# def.rank: 0 
+# rules: 3331 
+#
+# baseline: 0.69 
+####################################### 
+###############  glass  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 1 
+#
+# gamma: 0.19 
+# completeness: 0.2 
+# accuracy: 0.05 
+# def.rank: 0 
+# rules: 5416 
+#
+# baseline: 0.67 
+####################################### 
+###############  glass  ############### 
+# confidence: 70 
+# max pairs: 4 
+# calculated support: 1 
+#
+# gamma: 0.11 
+# completeness: 0.27 
+# accuracy: 0.02 
+# def.rank: 0 
+# rules: 7602 
+#
+# baseline: 0.68 
+####################################### 
+
+###############  housing  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 1 
+#
+# gamma: 1 
+# completeness: 0.07 
+# accuracy: 1 
+# def.rank: 0 
+# rules: 320 
+#
+# baseline: 0.05 
+######################################### 
+###############  housing  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 1 
+#
+# gamma: 0.39 
+# completeness: 0.13 
+# accuracy: 0.09 
+# def.rank: 0 
+# rules: 2699 
+#
+# baseline: 0.05 
+######################################### 
+###############  housing  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 1 
+#
+# gamma: 0.26 
+# completeness: 0.2 
+# accuracy: 0.02 
+# def.rank: 0 
+# rules: 4101 
+#
+# baseline: 0.07 
+######################################### 
+###############  housing  ############### 
+# confidence: 70 
+# max pairs: 4 
+# calculated support: 1 
+#
+# gamma: 0.22 
+# completeness: 0.27 
+# accuracy: 0.01 
+# def.rank: 0 
+# rules: 4774 
+#
+# baseline: 0.07 
+######################################### 
+
+###############  stock  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 1 
+#
+# gamma: 0.99 
+# completeness: 0.1 
+# accuracy: 0.99 
+# def.rank: 0 
+# rules: 513 
+#
+# baseline: 0.06 
+####################################### 
+###############  stock  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 1 
+#
+# gamma: 0.3 
+# completeness: 0.2 
+# accuracy: 0 
+# def.rank: 0 
+# rules: 3596 
+#
+# baseline: 0.07 
+####################################### 
+###############  stock  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 1 
+#
+# gamma: 0.23 
+# completeness: 0.3 
+# accuracy: 0.01 
+# def.rank: 0 
+# rules: 5651 
+#
+# baseline: 0.09 
+####################################### 
+###############  stock  ############### 
+# confidence: 70 
+# max pairs: 4 
+# calculated support: 1 
+#
+# gamma: 0.28 
+# completeness: 0.4 
+# accuracy: 0.1 
+# def.rank: 0 
+# rules: 6898 
+#
+# baseline: 0.08 
+####################################### 
+
+###############  vehicle  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 1 
+#
+# gamma: 0.96 
+# completeness: 0.17 
+# accuracy: 0.98 
+# def.rank: 0 
+# rules: 1575 
+#
+# baseline: 0.18 
+######################################### 
+###############  vehicle  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 1 
+#
+# gamma: 0.33 
+# completeness: 0.33 
+# accuracy: 0.05 
+# def.rank: 0 
+# rules: 10322 
+#
+# baseline: 0.18 
+######################################### 
+###############  vehicle  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 1 
+#
+# gamma: 0.11 
+# completeness: 0.5 
+# accuracy: 0.12 
+# def.rank: 0 
+# rules: 16943 
+#
+# baseline: 0.18 
+######################################### 
+###############  vehicle  ############### 
+# confidence: 70 
+# max pairs: 4 
+# calculated support: 1 
+#
+# gamma: 0.45 
+# completeness: 0.67 
+# accuracy: 0.26 
+# def.rank: 0 
+# rules: 20695 
+#
+# baseline: 0.18 
+######################################### 
+
+###############  wine  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 1 
+#
+# gamma: 0.89 
+# completeness: 0.33 
+# accuracy: 0.94 
+# def.rank: 0 
+# rules: 208 
+#
+# baseline: 0.33 
+###################################### 
+###############  wine  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 1 
+#
+# gamma: 0.28 
+# completeness: 0.67 
+# accuracy: 0.13 
+# def.rank: 0 
+# rules: 744 
+#
+# baseline: 0.33 
+###################################### 
+###############  wine  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 1 
+#
+# gamma: 0.5 
+# completeness: 0.99 
+# accuracy: 0.74 
+# def.rank: 0 
+# rules: 892 
+#
+# baseline: 0.33 
+###################################### 

@@ -134,6 +134,7 @@ aflrC7Pairwise <- function(disc.x, y, msup = 1, mconf = 70, mlift = 0, mimp = 0,
           
           pairsMatrix <- matrix(data=NA,nrow=ncol(y),ncol=ncol(y))
           pairs <- rr$Cons
+          
           pairs <- as.character(pairs)
           pairs <- unlist( strsplit(pairs, ","))
           sapply(pairs, function(pair){
@@ -155,9 +156,9 @@ aflrC7Pairwise <- function(disc.x, y, msup = 1, mconf = 70, mlift = 0, mimp = 0,
           sup <- round(as.numeric(rr$Sup)*100, 2)
           conf <- round(as.numeric(rr$Conf)*100, 2)
           lift <- round(as.numeric(rr$Lift)*100, 2)
-
+          
           completeness <- length(pairs)/maxpairs
-            
+          
           res[[length(res)+1]] <<- list(
             a=a,
             c=c,

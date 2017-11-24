@@ -1,0 +1,1160 @@
+###############  authorship  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 51 
+#
+# gamma: 0.86 
+# completeness: 0.17 
+# accuracy: 0.93 
+# def.rank: 0 
+# rules: 45 
+#
+# baseline: 0.57 
+############################################ 
+###############  authorship  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 51 
+#
+# gamma: 0.78 
+# completeness: 0.19 
+# accuracy: 0.81 
+# def.rank: 0 
+# rules: 112 
+#
+# baseline: 0.57 
+############################################
+###############  authorship  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 31 
+#
+# gamma: 0.51 
+# completeness: 0.25 
+# accuracy: 0.41 
+# def.rank: 0 
+# rules: 1776 
+#
+# baseline: 0.57 
+############################################
+###############  authorship  ############### 
+# confidence: 70 
+# max pairs: 4 
+# calculated support: 51 
+#
+# gamma: 0.75 
+# completeness: 0.2 
+# accuracy: 0.76 
+# def.rank: 0 
+# rules: 160 
+#
+# baseline: 0.57 
+############################################
+
+
+
+
+
+###############  bodyfat  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 16 
+#
+# gamma: 0.23 
+# completeness: 0.05 
+# accuracy: 0.62 
+# def.rank: 0 
+# rules: 35 
+#
+# baseline: -0.04 
+#########################################
+###############  bodyfat  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 16 
+#
+# gamma: 0.29 
+# completeness: 0.05 
+# accuracy: 0.64 
+# def.rank: 0 
+# rules: 46 
+#
+# baseline: -0.04 
+#########################################
+###############  bodyfat  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 11 
+#
+# gamma: 0.31 
+# completeness: 0.05 
+# accuracy: 0.65 
+# def.rank: 0 
+# rules: 91 
+#
+# baseline: -0.05 
+#########################################
+###############  bodyfat  ############### 
+# confidence: 70 
+# max pairs: 4 
+# calculated support: 11 
+#
+# gamma: 0.38 
+# completeness: 0.05 
+# accuracy: 0.69 
+# def.rank: 0 
+# rules: 99 
+#
+# baseline: -0.02 
+#########################################
+###############  bodyfat  ############### 
+# confidence: 70 
+# max pairs: 5 
+# calculated support: 11 
+#
+# gamma: 0.23 
+# completeness: 0.05 
+# accuracy: 0.62 
+# def.rank: 0 
+# rules: 104 
+#
+# baseline: -0.04 
+#########################################
+###############  bodyfat  ############### 
+# confidence: 70 
+# max pairs: 6 
+# calculated support: 16 
+#
+# gamma: 0.29 
+# completeness: 0.05 
+# accuracy: 0.64 
+# def.rank: 0 
+# rules: 44 
+#
+# baseline: -0.07 
+#########################################
+###############  bodyfat  ############### 
+# confidence: 70 
+# max pairs: 7 
+# calculated support: 1 
+#
+# gamma: 0.22 
+# completeness: 0.06 
+# accuracy: 0.49 
+# def.rank: 0.01 
+# rules: 1476 
+#
+# baseline: -0.07 
+#########################################
+
+
+
+
+
+###############  calhousing  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 1 
+#
+# gamma: 0.44 
+# completeness: 0.17 
+# accuracy: 0.67 
+# def.rank: 0.1 
+# rules: 236 
+#
+# baseline: 0.05 
+############################################
+###############  calhousing  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 1 
+#
+# gamma: 0.45 
+# completeness: 0.17 
+# accuracy: 0.67 
+# def.rank: 0.1 
+# rules: 381 
+#
+# baseline: 0.05 
+############################################
+###############  calhousing  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 1 
+#
+# gamma: 0.44 
+# completeness: 0.17 
+# accuracy: 0.66 
+# def.rank: 0.11 
+# rules: 420 
+#
+# baseline: 0.05 
+############################################
+###############  calhousing  ############### 
+# confidence: 70 
+# max pairs: 4 
+# calculated support: 1 
+#
+# gamma: 0.44 
+# completeness: 0.17 
+# accuracy: 0.67 
+# def.rank: 0.1 
+# rules: 427 
+#
+# baseline: 0.05 
+############################################
+
+
+
+
+
+###############  cpu-small  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 26 
+#
+# gamma: 0.7 
+# completeness: 0.1 
+# accuracy: 0.85 
+# def.rank: 0 
+# rules: 24 
+#
+# baseline: 0.23 
+###########################################
+###############  cpu-small  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 26 
+#
+# gamma: 0.7 
+# completeness: 0.1 
+# accuracy: 0.85 
+# def.rank: 0 
+# rules: 39 
+#
+# baseline: 0.23 
+###########################################
+###############  cpu-small  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 26 
+#
+# gamma: 0.7 
+# completeness: 0.1 
+# accuracy: 0.85 
+# def.rank: 0 
+# rules: 38 
+#
+# baseline: 0.23 
+###########################################
+###############  cpu-small  ############### 
+# confidence: 70 
+# max pairs: 4 
+# calculated support: 26 
+#
+# gamma: 0.7 
+# completeness: 0.1 
+# accuracy: 0.85 
+# def.rank: 0 
+# rules: 37 
+#
+# baseline: 0.23 
+###########################################
+###############  cpu-small  ############### 
+# confidence: 70 
+# max pairs: 5 
+# calculated support: 26 
+#
+# gamma: 0.7 
+# completeness: 0.1 
+# accuracy: 0.85 
+# def.rank: 0 
+# rules: 37 
+#
+# baseline: 0.23 
+###########################################
+
+
+
+
+
+###############  elevators  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 16 
+#
+# gamma: 0.87 
+# completeness: 0.03 
+# accuracy: 0.93 
+# def.rank: 0 
+# rules: 188 
+#
+# baseline: 0.29 
+###########################################
+###############  elevators  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 16 
+#
+# gamma: 0.86 
+# completeness: 0.03 
+# accuracy: 0.93 
+# def.rank: 0 
+# rules: 1429 
+#
+# baseline: 0.29 
+###########################################
+###############  elevators  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 26 
+#
+# gamma: 0.53 
+# completeness: 0.05 
+# accuracy: 0.42 
+# def.rank: 0 
+# rules: 472 
+#
+# baseline: 0.29 
+###########################################
+###############  elevators  ############### 
+# confidence: 70 
+# max pairs: 4 
+# calculated support: 16 
+#
+# gamma: 0.37 
+# completeness: 0.05 
+# accuracy: 0.17 
+# def.rank: 0 
+# rules: 2996 
+#
+# baseline: 0.29 
+###########################################
+###############  elevators  ############### 
+# confidence: 70 
+# max pairs: 5 
+# calculated support: 16 
+#
+# gamma: 0.52 
+# completeness: 0.05 
+# accuracy: 0.4 
+# def.rank: 0 
+# rules: 3348 
+#
+# baseline: 0.29 
+###########################################
+###############  elevators  ############### 
+# confidence: 70 
+# max pairs: 6 
+# calculated support: 16 
+#
+# gamma: 0.55 
+# completeness: 0.06 
+# accuracy: 0.43 
+# def.rank: 0 
+# rules: 3474 
+#
+# baseline: 0.29 
+###########################################
+###############  elevators  ############### 
+# confidence: 70 
+# max pairs: 7 
+# calculated support: 21 
+#
+# gamma: 0.54 
+# completeness: 0.05 
+# accuracy: 0.43 
+# def.rank: 0 
+# rules: 2028 
+#
+# baseline: 0.29 
+###########################################
+###############  elevators  ############### 
+# confidence: 70 
+# max pairs: 8 
+# calculated support: 21 
+#
+# gamma: 0.6 
+# completeness: 0.05 
+# accuracy: 0.51 
+# def.rank: 0 
+# rules: 2135 
+#
+# baseline: 0.29 
+###########################################
+###############  elevators  ############### 
+# confidence: 70 
+# max pairs: 9 
+# calculated support: 16 
+#
+# gamma: 0.6 
+# completeness: 0.04 
+# accuracy: 0.52 
+# def.rank: 0 
+# rules: 4341 
+#
+# baseline: 0.29 
+###########################################
+
+
+
+
+
+###############  pendigits  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 46 
+#
+# gamma: 1 
+# completeness: 0.02 
+# accuracy: 1 
+# def.rank: 0 
+# rules: 140 
+#
+# baseline: 0.45 
+###########################################
+###############  pendigits  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 46 
+#
+# gamma: 1 
+# completeness: 0.02 
+# accuracy: 1 
+# def.rank: 0 
+# rules: 1227 
+#
+# baseline: 0.45 
+###########################################
+###############  pendigits  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 46 
+#
+# gamma: 1 
+# completeness: 0.02 
+# accuracy: 1 
+# def.rank: 0 
+# rules: 1776 
+#
+# baseline: 0.45 
+########################################### 
+###############  pendigits  ############### 
+# confidence: 70 
+# max pairs: 4 
+# calculated support: 46 
+#
+# gamma: 1 
+# completeness: 0.02 
+# accuracy: 1 
+# def.rank: 0 
+# rules: 2120 
+#
+# baseline: 0.45 
+###########################################
+###############  pendigits  ############### 
+# confidence: 70 
+# max pairs: 5 
+# calculated support: 46 
+#
+# gamma: 1 
+# completeness: 0.02 
+# accuracy: 1 
+# def.rank: 0 
+# rules: 2065 
+#
+# baseline: 0.45 
+###########################################
+###############  pendigits  ############### 
+# confidence: 70 
+# max pairs: 6 
+# calculated support: 46 
+#
+# gamma: 1 
+# completeness: 0.02 
+# accuracy: 1 
+# def.rank: 0 
+# rules: 2101 
+#
+# baseline: 0.45 
+###########################################
+###############  pendigits  ############### 
+# confidence: 70 
+# max pairs: 7 
+# calculated support: 46 
+#
+# gamma: 1 
+# completeness: 0.02 
+# accuracy: 1 
+# def.rank: 0 
+# rules: 2103 
+#
+# baseline: 0.45 
+###########################################
+###############  pendigits  ############### 
+# confidence: 70 
+# max pairs: 8 
+# calculated support: 46 
+#
+# gamma: 1 
+# completeness: 0.02 
+# accuracy: 1 
+# def.rank: 0 
+# rules: 2105 
+#
+# baseline: 0.45 
+########################################### 
+###############  pendigits  ############### 
+# confidence: 70 
+# max pairs: 9 
+# calculated support: 46 
+#
+# gamma: 1 
+# completeness: 0.02 
+# accuracy: 1 
+# def.rank: 0 
+# rules: 2008 
+#
+# baseline: 0.45 
+########################################### 
+###############  pendigits  ############### 
+# confidence: 70 
+# max pairs: 10 
+# calculated support: 46 
+#
+# gamma: 1 
+# completeness: 0.02 
+# accuracy: 1 
+# def.rank: 0 
+# rules: 2150 
+#
+# baseline: 0.45 
+########################################### 
+
+
+
+
+
+###############  segment  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 31 
+#
+# gamma: 0.99 
+# completeness: 0.05 
+# accuracy: 0.99 
+# def.rank: 0 
+# rules: 50 
+#
+# baseline: 0.37 
+#########################################
+###############  segment  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 31 
+#
+# gamma: 0.97 
+# completeness: 0.05 
+# accuracy: 0.97 
+# def.rank: 0 
+# rules: 223 
+#
+# baseline: 0.37 
+#########################################
+###############  segment  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 31 
+#
+# gamma: 0.95 
+# completeness: 0.05 
+# accuracy: 0.94 
+# def.rank: 0 
+# rules: 288 
+#
+# baseline: 0.37 
+#########################################
+###############  segment  ############### 
+# confidence: 70 
+# max pairs: 4 
+# calculated support: 31 
+#
+# gamma: 0.94 
+# completeness: 0.05 
+# accuracy: 0.94 
+# def.rank: 0 
+# rules: 368 
+#
+# baseline: 0.37 
+######################################### 
+###############  segment  ############### 
+# confidence: 70 
+# max pairs: 5 
+# calculated support: 36 
+#
+# gamma: 0.93 
+# completeness: 0.05 
+# accuracy: 0.91 
+# def.rank: 0 
+# rules: 204 
+#
+# baseline: 0.37 
+######################################### 
+###############  segment  ############### 
+# confidence: 70 
+# max pairs: 6 
+# calculated support: 31 
+#
+# gamma: 0.97 
+# completeness: 0.05 
+# accuracy: 0.96 
+# def.rank: 0 
+# rules: 434 
+#
+# baseline: 0.37 
+#########################################
+###############  segment  ############### 
+# confidence: 70 
+# max pairs: 7 
+# calculated support: 31 
+#
+# gamma: 0.98 
+# completeness: 0.05 
+# accuracy: 0.98 
+# def.rank: 0 
+# rules: 518 
+#
+# baseline: 0.37 
+######################################### 
+
+
+
+
+
+###############  stock  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 11 
+#
+# gamma: 0.99 
+# completeness: 0.1 
+# accuracy: 0.99 
+# def.rank: 0 
+# rules: 112 
+#
+# baseline: 0.06 
+#######################################
+###############  stock  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 6 
+#
+# gamma: 0.72 
+# completeness: 0.14 
+# accuracy: 0.6 
+# def.rank: 0 
+# rules: 1436 
+#
+# baseline: 0.07 
+####################################### 
+###############  stock  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 11 
+#
+# gamma: 0.91 
+# completeness: 0.13 
+# accuracy: 0.88 
+# def.rank: 0 
+# rules: 516 
+#
+# baseline: 0.09 
+####################################### 
+###############  stock  ############### 
+# confidence: 70 
+# max pairs: 4 
+# calculated support: 11 
+#
+# gamma: 0.57 
+# completeness: 0.18 
+# accuracy: 0.45 
+# def.rank: 0 
+# rules: 602 
+#
+# baseline: 0.08 
+####################################### 
+###############  stock  ############### 
+# confidence: 70 
+# max pairs: 5 
+# calculated support: 11 
+#
+# gamma: 0.65 
+# completeness: 0.15 
+# accuracy: 0.53 
+# def.rank: 0 
+# rules: 588 
+#
+# baseline: 0.07 
+####################################### 
+
+
+
+
+
+###############  vehicle  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 31 
+#
+# gamma: 0.79 
+# completeness: 0.17 
+# accuracy: 0.89 
+# def.rank: 0 
+# rules: 41 
+#
+# baseline: 0.18 
+######################################### 
+###############  vehicle  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 31 
+#
+# gamma: 0.82 
+# completeness: 0.17 
+# accuracy: 0.91 
+# def.rank: 0 
+# rules: 90 
+#
+# baseline: 0.18 
+######################################### 
+###############  vehicle  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 31 
+#
+# gamma: 0.77 
+# completeness: 0.18 
+# accuracy: 0.81 
+# def.rank: 0 
+# rules: 101 
+#
+# baseline: 0.18 
+#########################################
+###############  vehicle  ############### 
+# confidence: 70 
+# max pairs: 4 
+# calculated support: 31 
+#
+# gamma: 0.65 
+# completeness: 0.21 
+# accuracy: 0.66 
+# def.rank: 0 
+# rules: 110 
+#
+# baseline: 0.18 
+######################################### 
+
+
+
+
+
+###############  vowel  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 31 
+#
+# gamma: 0.88 
+# completeness: 0.02 
+# accuracy: 0.94 
+# def.rank: 0 
+# rules: 96 
+#
+# baseline: 0.2 
+####################################### 
+###############  vowel  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 31 
+#
+# gamma: 0.81 
+# completeness: 0.02 
+# accuracy: 0.85 
+# def.rank: 0 
+# rules: 547 
+#
+# baseline: 0.19 
+####################################### 
+###############  vowel  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 31 
+#
+# gamma: 0.74 
+# completeness: 0.02 
+# accuracy: 0.77 
+# def.rank: 0 
+# rules: 771 
+#
+# baseline: 0.2 
+####################################### 
+###############  vowel  ############### 
+# confidence: 70 
+# max pairs: 4 
+# calculated support: 31 
+#
+# gamma: 0.74 
+# completeness: 0.02 
+# accuracy: 0.76 
+# def.rank: 0 
+# rules: 923 
+#
+# baseline: 0.2 
+####################################### 
+###############  vowel  ############### 
+# confidence: 70 
+# max pairs: 5 
+# calculated support: 31 
+#
+# gamma: 0.73 
+# completeness: 0.02 
+# accuracy: 0.74 
+# def.rank: 0 
+# rules: 1002 
+#
+# baseline: 0.2 
+####################################### 
+###############  vowel  ############### 
+# confidence: 70 
+# max pairs: 6 
+# calculated support: 31 
+#
+# gamma: 0.73 
+# completeness: 0.02 
+# accuracy: 0.72 
+# def.rank: 0 
+# rules: 1034 
+#
+# baseline: 0.2 
+####################################### 
+###############  vowel  ############### 
+# confidence: 70 
+# max pairs: 7 
+# calculated support: 31 
+#
+# gamma: 0.84 
+# completeness: 0.02 
+# accuracy: 0.92 
+# def.rank: 0 
+# rules: 1127 
+#
+# baseline: 0.19 
+####################################### 
+###############  vowel  ############### 
+# confidence: 70 
+# max pairs: 8 
+# calculated support: 31 
+#
+# gamma: 0.83 
+# completeness: 0.02 
+# accuracy: 0.87 
+# def.rank: 0 
+# rules: 1113 
+#
+# baseline: 0.19 
+####################################### 
+###############  vowel  ############### 
+# confidence: 70 
+# max pairs: 9 
+# calculated support: 31 
+#
+# gamma: 0.73 
+# completeness: 0.02 
+# accuracy: 0.76 
+# def.rank: 0 
+# rules: 1206 
+#
+# baseline: 0.19 
+####################################### 
+###############  vowel  ############### 
+# confidence: 70 
+# max pairs: 10 
+# calculated support: 26 
+#
+# gamma: 0.71 
+# completeness: 0.02 
+# accuracy: 0.64 
+# def.rank: 0 
+# rules: 2523 
+#
+# baseline: 0.2 
+####################################### 
+###############  vowel  ############### 
+# confidence: 70 
+# max pairs: 11 
+# calculated support: 31 
+#
+# gamma: 0.85 
+# completeness: 0.02 
+# accuracy: 0.91 
+# def.rank: 0 
+# rules: 1083 
+#
+# baseline: 0.2 
+####################################### 
+
+
+
+
+
+###############  wine  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 26 
+#
+# gamma: 0.84 
+# completeness: 0.33 
+# accuracy: 0.92 
+# def.rank: 0 
+# rules: 47 
+#
+# baseline: 0.33 
+###################################### 
+###############  wine  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 31 
+#
+# gamma: 0.7 
+# completeness: 0.38 
+# accuracy: 0.77 
+# def.rank: 0 
+# rules: 51 
+#
+# baseline: 0.33 
+###################################### 
+###############  wine  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 31 
+#
+# gamma: 0.39 
+# completeness: 0.52 
+# accuracy: 0.37 
+# def.rank: 0 
+# rules: 60 
+#
+# baseline: 0.33 
+###################################### 
+
+
+
+
+
+###############  wisconsin  ############### 
+# confidence: 70 
+# max pairs: 1 
+# calculated support: 36 
+#
+# gamma: 0.73 
+# completeness: 0.01 
+# accuracy: 0.87 
+# def.rank: 0 
+# rules: 445 
+#
+# baseline: -0.03 
+########################################### 
+###############  wisconsin  ############### 
+# confidence: 70 
+# max pairs: 2 
+# calculated support: 36 
+#
+# gamma: 0.61 
+# completeness: 0.01 
+# accuracy: 0.71 
+# def.rank: 0 
+# rules: 1717 
+#
+# baseline: -0.04 
+########################################### 
+###############  wisconsin  ############### 
+# confidence: 70 
+# max pairs: 3 
+# calculated support: 36 
+#
+# gamma: 0.5 
+# completeness: 0.01 
+# accuracy: 0.49 
+# def.rank: 0 
+# rules: 2338 
+#
+# baseline: -0.03 
+########################################### 
+###############  wisconsin  ############### 
+# confidence: 70 
+# max pairs: 4 
+# calculated support: 36 
+#
+# gamma: 0.48 
+# completeness: 0.01 
+# accuracy: 0.45 
+# def.rank: 0 
+# rules: 2585 
+#
+# baseline: -0.01 
+########################################### 
+###############  wisconsin  ############### 
+# confidence: 70 
+# max pairs: 5 
+# calculated support: 36 
+#
+# gamma: 0.48 
+# completeness: 0.01 
+# accuracy: 0.5 
+# def.rank: 0 
+# rules: 2738 
+#
+# baseline: -0.01 
+########################################### 
+###############  wisconsin  ############### 
+# confidence: 70 
+# max pairs: 6 
+# calculated support: 36 
+#
+# gamma: 0.53 
+# completeness: 0.01 
+# accuracy: 0.53 
+# def.rank: 0 
+# rules: 2760 
+#
+# baseline: -0.01 
+########################################### 
+###############  wisconsin  ############### 
+# confidence: 70 
+# max pairs: 7 
+# calculated support: 36 
+#
+# gamma: 0.55 
+# completeness: 0.01 
+# accuracy: 0.61 
+# def.rank: 0 
+# rules: 2844 
+#
+# baseline: -0.01 
+########################################### 
+###############  wisconsin  ############### 
+# confidence: 70 
+# max pairs: 8 
+# calculated support: 36 
+#
+# gamma: 0.48 
+# completeness: 0.01 
+# accuracy: 0.45 
+# def.rank: 0 
+# rules: 2854 
+#
+# baseline: -0.01 
+########################################### 
+###############  wisconsin  ############### 
+# confidence: 70 
+# max pairs: 9 
+# calculated support: 36 
+#
+# gamma: 0.51 
+# completeness: 0.01 
+# accuracy: 0.52 
+# def.rank: 0 
+# rules: 2832 
+#
+# baseline: 0 
+########################################### 
+###############  wisconsin  ############### 
+# confidence: 70 
+# max pairs: 10 
+# calculated support: 41 
+#
+# gamma: 0.3 
+# completeness: 0.01 
+# accuracy: 0.49 
+# def.rank: 0 
+# rules: 968 
+#
+# baseline: -0.01 
+########################################### 
+###############  wisconsin  ############### 
+# confidence: 70 
+# max pairs: 11 
+# calculated support: 36 
+#
+# gamma: 0.47 
+# completeness: 0.01 
+# accuracy: 0.44 
+# def.rank: 0 
+# rules: 2794 
+#
+# baseline: 0 
+########################################### 
+###############  wisconsin  ############### 
+# confidence: 70 
+# max pairs: 12 
+# calculated support: 36 
+#
+# gamma: 0.44 
+# completeness: 0.01 
+# accuracy: 0.45 
+# def.rank: 0 
+# rules: 3026 
+#
+# baseline: 0 
+########################################### 
+###############  wisconsin  ############### 
+# confidence: 70 
+# max pairs: 13 
+# calculated support: 36 
+#
+# gamma: 0.57 
+# completeness: 0.01 
+# accuracy: 0.56 
+# def.rank: 0 
+# rules: 2997 
+#
+# baseline: -0.04 
+########################################### 
+###############  wisconsin  ############### 
+# confidence: 70 
+# max pairs: 14 
+# calculated support: 36 
+#
+# gamma: 0.52 
+# completeness: 0.01 
+# accuracy: 0.52 
+# def.rank: 0 
+# rules: 2951 
+#
+# baseline: -0.02 
+########################################### 
+###############  wisconsin  ############### 
+# confidence: 70 
+# max pairs: 15 
+# calculated support: 41 
+#
+# gamma: 0.41 
+# completeness: 0.01 
+# accuracy: 0.62 
+# def.rank: 0 
+# rules: 1039 
+#
+# baseline: -0.03 
+########################################### 
+###############  wisconsin  ############### 
+# confidence: 70 
+# max pairs: 16 
+# calculated support: 36 
+#
+# gamma: 0.55 
+# completeness: 0.01 
+# accuracy: 0.53 
+# def.rank: 0 
+# rules: 2788 
+#
+# baseline: -0.01 
+########################################### 
