@@ -79,6 +79,12 @@ crankPairwise <- function(rulz, xs, ys, std, m2, mt, kfold = 0)
   rulz <- rulz[order(-sapply(rulz, "[[" ,"conf" ))]
   rulz <- rulz[order(-sapply(rulz, "[[" ,"completeness" ))]
   
+  # n <- ncol(ys)
+  # maximumpairs <- factorial(n)/(factorial(2)*factorial(n-2))
+  # expectedCompleteness <- maxPairs/maximumpairs
+  # rulzMax <- sapply(rulz, function(l) { l$completeness == expectedCompleteness })
+  # rulz <- rulz[rulzMax]
+  
   if (mt==0)
   { 
     i <- TRUE

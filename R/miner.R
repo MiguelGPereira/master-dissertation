@@ -179,6 +179,7 @@ mineRules<-function(X, Y, is2Years = 0, folds = NULL, Kfolds = 1, xs = NULL, ys 
       print("baseline w/ last year's results")
       print(mean(sapply(1:nrow(ys), function(j) cor(ys[j,], baseline, method="kendall"))))
     } else if(isPairwise){
+      #browser()
       yp <- t(yp)
       colnames(yp) <- colnames(y)
       #saveRDS(yp, "predictions2013.rds")
@@ -200,7 +201,11 @@ mineRules<-function(X, Y, is2Years = 0, folds = NULL, Kfolds = 1, xs = NULL, ys 
       print(paste("baseline tau=", baselineTau))
       print(paste("smart baseline",mean(sapply(1:nrow(ys), function(j) cor(y[j,], ys[j,], method="kendall")))))
       if(i == Kfolds){
-        title <- paste("############### ",dataset," ###############")
+        if(!is.null(dataset)){
+          title <- paste("############### ",dataset," ###############")  
+        } else {
+          title <- paste("############### output ###############")  
+        }
         cat("\n")
         cat(title,"\n")
         cat("# confidence:",minConfidence,"\n")
