@@ -25,6 +25,7 @@ goodmank <- function(x,y)
 {
   a <- outer(x,x,function(u,v) sign(v-u))
   b <- outer(y,y,function(u,v) sign(v-u))
+  b[b==0] <- NA
   comp <- a==b
   diag(comp) <- NA
   return((sum(comp, na.rm = TRUE)-sum(!comp, na.rm = TRUE))/sum((comp)>=0, na.rm = T))
@@ -34,6 +35,7 @@ accuracy <- function(x,y)
 {
   a <- outer(x,x,function(u,v) sign(v-u))
   b <- outer(y,y,function(u,v) sign(v-u))
+  b[b==0] <- NA
   comp <- a==b
   diag(comp) <- NA
   return(sum(!comp, na.rm = TRUE) == 0)
@@ -79,12 +81,12 @@ equalWidthDisc <- function(x, indexesDiscretized, DISC)
 }
 
 mineRules<-function(X, Y, is2Years = 0, folds = NULL, Kfolds = 1, xs = NULL, ys = NULL){
-  tauList = list()
-  accuracyList = list()
-  baselineList = list()
+  tauList <<- list()
+  accuracyList <<- list()
+  baselineList <<- list()
   completenessList <<- list()
   defRankUsageList <<- list()
-  rulzList = list()
+  rulzList <<- list()
   for(i in 1:Kfolds){
     
     if(is2Years){
@@ -190,7 +192,7 @@ mineRules<-function(X, Y, is2Years = 0, folds = NULL, Kfolds = 1, xs = NULL, ys 
       
       tauList[[i]] <- gamma
       accuracyList[[i]] <- acc
-      rulzList[[i]] <- length(rulz)
+      #rulzList[[i]] <- length(rulz)
       if (defRankUsageList[[i]] != 0 && minSupport > 1) {
         stop("non zero def.rank")
       }

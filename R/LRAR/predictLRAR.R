@@ -77,13 +77,13 @@ crankPairwise <- function(rulz, xs, ys, std, m2, mt, kfold = 0)
   
   rulz <- rulz[order(-sapply(rulz, "[[" ,"sup" ))]
   rulz <- rulz[order(-sapply(rulz, "[[" ,"conf" ))]
-  rulz <- rulz[order(-sapply(rulz, "[[" ,"completeness" ))]
+  #rulz <- rulz[order(-sapply(rulz, "[[" ,"completeness" ))]
   
-  # n <- ncol(ys)
-  # maximumpairs <- factorial(n)/(factorial(2)*factorial(n-2))
-  # expectedCompleteness <- maxPairs/maximumpairs
-  # rulzMax <- sapply(rulz, function(l) { l$completeness == expectedCompleteness })
-  # rulz <- rulz[rulzMax]
+  n <- ncol(ys)
+  maximumpairs <- factorial(n)/(factorial(2)*factorial(n-2))
+  expectedCompleteness <- maxPairs/maximumpairs
+  rulzMax <- sapply(rulz, function(l) { l$completeness == expectedCompleteness })
+  rulz <- rulz[rulzMax]
   
   if (mt==0)
   { 
@@ -122,7 +122,6 @@ crankPairwise <- function(rulz, xs, ys, std, m2, mt, kfold = 0)
       
       compList[[compIndex]] <<- rulz[a][1][[1]]$completeness
       compIndex <<- compIndex + 1
-      #browser()
       
       normalizer <- colSums(abs(appliedRules))
       aggregatedRules <- apply(appliedRules, 2, function(column){ sum(column, na.rm = TRUE) })
@@ -161,6 +160,8 @@ crankPairwise <- function(rulz, xs, ys, std, m2, mt, kfold = 0)
   percentDefRank <- defRankCount * 1 / nrow(xs)
   print(paste("def rank % in fold ",percentDefRank))
   defRankUsageList[[kfold]] <<- percentDefRank
+  
+  rulzList[[kfold]] <<- length(rulz)
   
   rs
 }

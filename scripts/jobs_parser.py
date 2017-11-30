@@ -5,7 +5,7 @@ import csv
 from os import listdir
 
 lines = []
-with open('new_mini.out') as f:
+with open('all.jobs.mini.revised') as f:
     lines = f.readlines()
 
 datasets = []
@@ -31,7 +31,7 @@ for line in lines:
 
 
 
-with open('jobs.mini.new.csv', 'w', encoding='latin-1') as csvfile:
+with open('all.jobs.mini.revised.csv', 'w', encoding='latin-1') as csvfile:
     writer = csv.writer(csvfile, delimiter=';', quotechar='|', quoting=csv.QUOTE_MINIMAL)
     for set in datasets:
         writer.writerow(set)
