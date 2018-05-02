@@ -1,0 +1,57 @@
+10/11 
+-> descoberta de regras
+-> origem: market basket analysis
+-> usar o exemplo beer diapers
+-> analisar padrões de compra
+-> dar um exemplo duma regra normal num dataset sem target, e mostrar como adicionando um target isto pode ser usado em previsão
+12
+-> all the regions -> the space that contains the characteristics of all the regions
+14
+-> isto pode gerar imensas regras, por isso .. motivar o pruning
+15
+-> usar o mesmo esquema para ilustrar porque não podemos usar imporvement
+-> comprimir o 15 no 14
+16
+-> deselecionar Apriori
+-> saber como funciona apriori e fp-growth
+18
+-> preference learning dentro de ML
+19 
+-> "label ranking tem um conjunto de classe e tenta prever a order dessas classes ex bmw fiat.."
+-> ver site de datasets: tem lá slides a definir muito bem LR
+-> separar formalização e o goal
+22
+-> representar PAR mais visualmente e num caso mais extremo p ex 3>4 e 2>1 (não há relações)
+-> juntar 20 e 21 no 22
+-> pôr rankings em cima das orders
+-> antes do 22 mostrar o que é uma pairwise comparison (é uma comparação entre duas labels, um ranking pode então ser mostrado como um conjunto de comparações) / mostrar como um ranking pode ser decomposto / usar a matrix -> por o slide da matrix em anexo
+25
+-> usar o exemplo dos carros p.ex. (o que estiver a usar)
+26
+-> por a legenda da formalização em baixo
+28
+-> tirar, o 29 chega
+30
+-> referir os dois como medidas de correlação
+-> mencionar formula (substituir C por concordant pairs.etc..)
+33
+-> isto é um problema complexo logo preciso de limitar as regras - por exemplo em casos de 10 labels dava um numero absurdo -> exemplo com 3 labels 4 e 7 p ex
+-> o =1 é o pairs
+-> considerar tirar as caixas aqui e juntar completenesse e max pairwise (maybe not, see)
+34
+-> completeness é uma medida que nós definimos
+-> é uma medida que avalia o quanto está a ser previsto quanto ao ranking total
+37 
+-> fazer slide a seguir com esquema de cross validation (ver net)
+38 
+-> slide a seguir a eleicoes a explicar de um ano para o outro
+47
+-> tirar e incluir no 46
+46
+-> não vou usar o min improvement MAS usamos o teste de fisher
+52
+-> por esta tabela completa em anexo e aqui tirar os 4 metodos dos outros gajos
+-> por a completeness nos pairs
+53
+-> tirar
+61 -> tirar as cinco, por só uma talvez mas interpretável

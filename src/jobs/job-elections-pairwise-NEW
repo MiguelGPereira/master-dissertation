@@ -1,0 +1,213 @@
+###############  german2005_2009  ############### 
+# confidence: 0.7 
+# max pairs: 1 
+# calculated support: 0.01 
+#
+# gamma: 0.82 
+# completeness: 0.1 
+# accuracy: 0.91 
+# def.rank: 0 
+# rules: 622 
+#
+# baseline (gamma): 0.72 
+%RFORMAT%german2005_2009%0.7%1%0.01%0.82%0.1%0.91%0%622%0.72%0
+#################################################
+###############  german2005_2009  ############### 
+# confidence: 0.7 
+# max pairs: 2 
+# calculated support: 0.01 
+#
+# gamma: 0.75 
+# completeness: 0.2 
+# accuracy: 0.76 
+# def.rank: 0 
+# rules: 4654 
+#
+# baseline (gamma): 0.72 
+%RFORMAT%german2005_2009%0.7%2%0.01%0.75%0.2%0.76%0%4654%0.72%0
+#################################################
+###############  german2005_2009  ############### 
+# confidence: 0.7 
+# max pairs: 3 
+# calculated support: 0.01 
+#
+# gamma: 0.84 
+# completeness: 0.3 
+# accuracy: 0.76 
+# def.rank: 0 
+# rules: 3709 
+#
+# baseline (gamma): 0.72 
+%RFORMAT%german2005_2009%0.7%3%0.01%0.84%0.3%0.76%0%3709%0.72%0
+#################################################
+###############  german2005_2009  ############### 
+# confidence: 0.7 
+# max pairs: 4 
+# calculated support: 0.01 
+#
+# gamma: 0.86 
+# completeness: 0.4 
+# accuracy: 0.73 
+# def.rank: 0 
+# rules: 2973 
+#
+# baseline (gamma): 0.72 
+%RFORMAT%german2005_2009%0.7%4%0.01%0.86%0.4%0.73%0%2973%0.72%0
+#################################################
+###############  german2005_2009  ############### 
+# confidence: 0.7 
+# max pairs: 5 
+# calculated support: 0.01 
+#
+# gamma: 0.89 
+# completeness: 0.5 
+# accuracy: 0.73 
+# def.rank: 0 
+# rules: 2268 
+#
+# baseline (gamma): 0.72 
+%RFORMAT%german2005_2009%0.7%5%0.01%0.89%0.5%0.73%0%2268%0.72%0
+#################################################
+
+
+###############  portugal2009_2013  ############### 
+# confidence: 0.7 
+# max pairs: 1 
+# calculated support: 0.01 
+#
+# gamma: 0.92 
+# completeness: 0.1 
+# accuracy: 0.96 
+# def.rank: 0 
+# rules: 847 
+#
+# baseline (gamma): 0.65 
+%RFORMAT%portugal2009_2013%0.7%1%0.01%0.92%0.1%0.96%0%847%0.65%0
+###################################################
+###############  portugal2009_2013  ############### 
+# confidence: 0.7 
+# max pairs: 2 
+# calculated support: 0.01 
+#
+# gamma: 0.82 
+# completeness: 0.2 
+# accuracy: 0.84 
+# def.rank: 0 
+# rules: 5314 
+#
+# baseline (gamma): 0.65 
+%RFORMAT%portugal2009_2013%0.7%2%0.01%0.82%0.2%0.84%0%5314%0.65%0
+###################################################
+###############  portugal2009_2013  ############### 
+# confidence: 0.7 
+# max pairs: 3 
+# calculated support: 0.01 
+#
+# gamma: 0.79 
+# completeness: 0.3 
+# accuracy: 0.74 
+# def.rank: 0 
+# rules: 3410 
+#
+# baseline (gamma): 0.65 
+%RFORMAT%portugal2009_2013%0.7%3%0.01%0.79%0.3%0.74%0%3410%0.65%0
+###################################################
+###############  portugal2009_2013  ############### 
+# confidence: 0.7 
+# max pairs: 4 
+# calculated support: 0.01 
+#
+# gamma: 0.66 
+# completeness: 0.4 
+# accuracy: 0.54 
+# def.rank: 0 
+# rules: 2180 
+#
+# baseline (gamma): 0.65 
+%RFORMAT%portugal2009_2013%0.7%4%0.01%0.66%0.4%0.54%0%2180%0.65%0
+###################################################
+###############  portugal2009_2013  ############### 
+# confidence: 0.7 
+# max pairs: 5 
+# calculated support: 0.01 
+#
+# gamma: 0.67 
+# completeness: 0.5 
+# accuracy: 0.43 
+# def.rank: 0.01 
+# rules: 1209 
+#
+# baseline (gamma): 0.65 
+%RFORMAT%portugal2009_2013%0.7%5%0.01%0.67%0.5%0.43%0.01%1209%0.65%0
+###################################################
+
+###############  portugal2013_2017  ############### 
+# confidence: 0.7 
+# max pairs: 1 
+# calculated support: 0.01 
+#
+# gamma: 0.75 
+# completeness: 0.1 
+# accuracy: 0.87 
+# def.rank: 0 
+# rules: 586 
+#
+# baseline (gamma): 0.44 
+%RFORMAT%portugal2013_2017%0.7%1%0.01%0.75%0.1%0.87%0%586%0.44%0
+###################################################
+###############  portugal2013_2017  ############### 
+# confidence: 0.7 
+# max pairs: 2 
+# calculated support: 0.01 
+#
+# gamma: 0.75 
+# completeness: 0.2 
+# accuracy: 0.77 
+# def.rank: 0 
+# rules: 3961 
+#
+# baseline (gamma): 0.44 
+%RFORMAT%portugal2013_2017%0.7%2%0.01%0.75%0.2%0.77%0%3961%0.44%0
+###################################################
+###############  portugal2013_2017  ############### 
+# confidence: 0.7 
+# max pairs: 3 
+# calculated support: 0.01 
+#
+# gamma: 0.63 
+# completeness: 0.3 
+# accuracy: 0.55 
+# def.rank: 0 
+# rules: 3011 
+#
+# baseline (gamma): 0.44 
+%RFORMAT%portugal2013_2017%0.7%3%0.01%0.63%0.3%0.55%0%3011%0.44%0
+################################################### 
+###############  portugal2013_2017  ############### 
+# confidence: 0.7 
+# max pairs: 4 
+# calculated support: 0.01 
+#
+# gamma: 0.63 
+# completeness: 0.4 
+# accuracy: 0.45 
+# def.rank: 0 
+# rules: 2343 
+#
+# baseline (gamma): 0.44 
+%RFORMAT%portugal2013_2017%0.7%4%0.01%0.63%0.4%0.45%0%2343%0.44%0
+###################################################
+###############  portugal2013_2017  ############### 
+# confidence: 0.7 
+# max pairs: 5 
+# calculated support: 0.01 
+#
+# gamma: 0.62 
+# completeness: 0.5 
+# accuracy: 0.37 
+# def.rank: 0 
+# rules: 1602 
+#
+# baseline (gamma): 0.44 
+%RFORMAT%portugal2013_2017%0.7%5%0.01%0.62%0.5%0.37%0%1602%0.44%0
+###################################################

@@ -1,0 +1,1366 @@
+Loading required package: Matrix
+
+Attaching package: 'arules'
+
+The following objects are masked from 'package:base':
+
+    abbreviate, write
+
+Loading required package: parallel
+There were 30 warnings (use warnings() to see them)
+to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # CORE SCRIPT
+> 
+> isGrid <- F
+> args = commandArgs(trailingOnly=TRUE)
+> if (length(args)==1) {
++   if (args[1] == "grid"){
++     isGrid <- T
++   }
++ }
+> 
+> # dependencies
+> if (isGrid) {
++   library("carenR",lib.loc="/homes/up201402671/data/R/lib")
++   library(arules, lib.loc="/homes/up201402671/data/R/lib")
++   source("caren_integrated.R")
++ } else {
++   require("carenR")
++   library(arules)
++ }
+> source("LRAR/caren.R")
+> source("LRAR/predictLRAR.R")
+> source("edira/edira.R")
+> source("miner.R")
+> 
+> # configurations
+> isPairwise <- 1
+> 
+> Kfolds <- 10
+> randomSeed <- 1234
+> minConfidence <- 70
+> baseMinSupport <- 1
+> confThreshold <- 0.05
+> minLift <- 0
+> minImprovment <- 0
+> theta <- 1
+> 
+> #load("german2005.RDATA")
+> #load("german2009.RDATA")
+> #load("german2005_2009.RDATA")
+> #load("portugal2009.RDATA")
+> #load("portugal2013.RDATA")
+> #load("portugal2009_2013.RDATA")
+> #load("portugal2013_2017.RDATA")
+> 
+> #datasets <- list("iris","bodyfat","glass","housing", "stock", "vehicle", "wine","authorship","cpu-small")
+> datasets <- list("iris")
+> 
+> # zz <- file("all.Rout", open = "wt")
+> # sink(zz)
+> # sink(zz, type = "message")
+> 
+> for(dataset in datasets) {
++   if (isGrid) {
++     load(paste("/homes/up201402671/data/master-dissertation/R/label_ranking_data/",dataset,".RData", sep = ""))
++   } else {
++     load(paste("label_ranking_data/",dataset,".RDATA", sep = ""))  
++   }
++   
++   is2Years <- 0
++   X <- x
++   Y <- y
++ 
++   # Randomly shuffle the data
++   set.seed(randomSeed)
++   samplerows <- sample(nrow(X))
++   X <- X[samplerows, ]
++   Y <- Y[samplerows, ]
++ 
++   pairsLimit <- if(ncol(Y) < 4) ncol(Y) else 4
++   for(mpairs in 1:pairsLimit){
++     maxPairs <<- mpairs
++     minSupport <<- baseMinSupport
++     
++     # invoke miner
++     if(is2Years){
++       mineRules(X, Y, is2Years, xs = xs, ys = ys)
++     } else {
++       # KFold Cross Validation
++       
++       # Create K equally size folds
++       folds <- cut(seq(1, nrow(X)), breaks = Kfolds, labels = FALSE)
++       
++       # Perform K fold cross validation
++       #mineRules(X, Y, folds = folds, Kfolds = Kfolds)
++       repeat{
++         exception <- FALSE
++         result = tryCatch({
++           mineRules(X, Y, folds = folds, Kfolds = Kfolds)
++         }, error = function(e) {
++           #if(e$message == "subscript out of bounds" &&  e$call == "FUN(X[[i]], ...)"){
++           if(e$message == "no rules"){
++             if(minSupport == 1) {
++               print("#no rules found!")
++               exception <- TRUE
++             } else {
++               print(paste("#no rules found - decreasing support from ",minSupport," to ",minSupport - 5))
++               minSupport <<- minSupport - 5
++               e
++             }
++           } else if(e$message == "non zero def.rank"){
++             print(paste("#def.rank can be optimized - decreasing support from ",minSupport," to ",minSupport - 5))
++             minSupport <<- minSupport - 5
++             e
++           } else {
++             print("#error")
++             print(e)  
++             exception <- TRUE
++           }
++         }, finally = {})
++         
++         if( !inherits(result, "error") || (inherits(result, "error") && exception) ){
++           break()
++         }
++       }
++       
++     }
++   }
++ }
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair1 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 20    NumFrequentItems = 20  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 1
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 20 frequent items and 6 consequents 
+ Performing item:      123456789101112131420.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 34 rules. Performing rule           012345678910111213141516171819202122232425262728293031323334
+   
+Building Prediction Model from derived 34 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\| 
+
+Total Time spent = 0 hrs 0 mts 1 secs 651 millis
+
+[1] "completeness 0.333333333333333"
+[1] "def rank % in fold  0"
+[1] "fold 1 : gamma= 1  | completeness= 0.333333333333333  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= 0.2"
+[1] "smart baseline 0.0666666666666667"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair1 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 22    NumFrequentItems = 22  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 1
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 22 frequent items and 6 consequents 
+ Performing item:      1234567891011121314151622.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 37 rules. Performing rule           012345678910111213141516171819202122232425262728293031323334353637
+   
+Building Prediction Model from derived 37 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\ 
+
+Total Time spent = 0 hrs 0 mts 2 secs 301 millis
+
+[1] "completeness 0.333333333333333"
+[1] "def rank % in fold  0"
+[1] "fold 2 : gamma= 1  | completeness= 0.333333333333333  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= -0.111111111111111"
+[1] "smart baseline 0.0666666666666667"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair1 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 21    NumFrequentItems = 21  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 1
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 21 frequent items and 6 consequents 
+ Performing item:      12345678910111213141521.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 40 rules. Performing rule           012345678910111213141516171819202122232425262728293031323334353637383940
+   
+Building Prediction Model from derived 40 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/- 
+
+Total Time spent = 0 hrs 0 mts 2 secs 285 millis
+
+[1] "completeness 0.333333333333333"
+[1] "def rank % in fold  0"
+[1] "fold 3 : gamma= 1  | completeness= 0.333333333333333  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= 0.244444444444444"
+[1] "smart baseline -0.0222222222222222"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair1 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 21    NumFrequentItems = 21  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 1
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 21 frequent items and 6 consequents 
+ Performing item:      12345678910111213141521.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 40 rules. Performing rule           012345678910111213141516171819202122232425262728293031323334353637383940
+   
+Building Prediction Model from derived 40 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/- 
+
+Total Time spent = 0 hrs 0 mts 1 secs 995 millis
+
+[1] "completeness 0.333333333333333"
+[1] "def rank % in fold  0"
+[1] "fold 4 : gamma= 1  | completeness= 0.333333333333333  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= -0.0666666666666667"
+[1] "smart baseline -0.244444444444444"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair1 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 20    NumFrequentItems = 20  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 1
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 20 frequent items and 6 consequents 
+ Performing item:      123456789101112131420.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 34 rules. Performing rule           012345678910111213141516171819202122232425262728293031323334
+   
+Building Prediction Model from derived 34 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\| 
+
+Total Time spent = 0 hrs 0 mts 1 secs 806 millis
+
+[1] "completeness 0.333333333333333"
+[1] "def rank % in fold  0"
+[1] "fold 5 : gamma= 1  | completeness= 0.333333333333333  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= -0.111111111111111"
+[1] "smart baseline -0.0222222222222222"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair1 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 20    NumFrequentItems = 20  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 1
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 20 frequent items and 6 consequents 
+ Performing item:      123456789101112131420.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 34 rules. Performing rule           012345678910111213141516171819202122232425262728293031323334
+   
+Building Prediction Model from derived 34 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\| 
+
+Total Time spent = 0 hrs 0 mts 1 secs 263 millis
+
+[1] "completeness 0.333333333333333"
+[1] "def rank % in fold  0"
+[1] "fold 6 : gamma= 0.866666666666667  | completeness= 0.333333333333333  | accuracy= 0.933333333333333  | %defrank= 0"
+[1] "baseline tau= 0.244444444444444"
+[1] "smart baseline 0.155555555555556"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair1 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 19    NumFrequentItems = 19  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 1
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 19 frequent items and 6 consequents 
+ Performing item:      1234567891011121319.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 34 rules. Performing rule           012345678910111213141516171819202122232425262728293031323334
+   
+Building Prediction Model from derived 34 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\| 
+
+Total Time spent = 0 hrs 0 mts 1 secs 367 millis
+
+[1] "completeness 0.333333333333333"
+[1] "def rank % in fold  0"
+[1] "fold 7 : gamma= 0.866666666666667  | completeness= 0.333333333333333  | accuracy= 0.933333333333333  | %defrank= 0"
+[1] "baseline tau= -0.0666666666666667"
+[1] "smart baseline 0.111111111111111"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair1 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 21    NumFrequentItems = 21  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 1
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 21 frequent items and 6 consequents 
+ Performing item:      12345678910111213141521.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 34 rules. Performing rule           012345678910111213141516171819202122232425262728293031323334
+   
+Building Prediction Model from derived 34 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\| 
+
+Total Time spent = 0 hrs 0 mts 1 secs 678 millis
+
+[1] "completeness 0.333333333333333"
+[1] "def rank % in fold  0"
+[1] "fold 8 : gamma= 1  | completeness= 0.333333333333333  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= 0.377777777777778"
+[1] "smart baseline 0.377777777777778"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair1 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 20    NumFrequentItems = 20  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 1
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 20 frequent items and 6 consequents 
+ Performing item:      123456789101112131420.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 33 rules. Performing rule           0123456789101112131415161718192021222324252627282930313233
+   
+Building Prediction Model from derived 33 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\ 
+
+Total Time spent = 0 hrs 0 mts 1 secs 330 millis
+
+[1] "completeness 0.333333333333333"
+[1] "def rank % in fold  0"
+[1] "fold 9 : gamma= 0.733333333333333  | completeness= 0.333333333333333  | accuracy= 0.866666666666667  | %defrank= 0"
+[1] "baseline tau= 0.244444444444444"
+[1] "smart baseline 0.333333333333333"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair1 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 20    NumFrequentItems = 20  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 1
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 20 frequent items and 6 consequents 
+ Performing item:      123456789101112131420.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 33 rules. Performing rule           0123456789101112131415161718192021222324252627282930313233
+   
+Building Prediction Model from derived 33 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\ 
+
+Total Time spent = 0 hrs 0 mts 1 secs 901 millis
+
+[1] "completeness 0.333333333333333"
+[1] "def rank % in fold  0"
+[1] "fold 10 : gamma= 1  | completeness= 0.333333333333333  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= -0.0666666666666667"
+[1] "smart baseline 0.0222222222222222"
+
+###############  iris  ############### 
+# confidence: 0.7 
+# max pairs: 1 
+# calculated support: 0.01 
+#
+# gamma: 0.95 
+# completeness: 0.33 
+# accuracy: 0.97 
+# def.rank: 0 
+# rules: 35 
+#
+# baseline (gamma): 0.09 
+%RFORMAT%iris%0.7%1%0.01%0.95%0.33%0.97%0%35%0.09%0
+###################################### 
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair2 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 20    NumFrequentItems = 20  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 2
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 31 frequent items and 17 consequents 
+ Performing item:      123456789101112131420.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 81 rules. Performing rule           0123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081
+   
+Building Prediction Model from derived 81 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\ 
+
+Total Time spent = 0 hrs 0 mts 1 secs 692 millis
+
+[1] "completeness 0.666666666666667"
+[1] "def rank % in fold  0"
+[1] "fold 1 : gamma= 1  | completeness= 0.666666666666667  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= 0.2"
+[1] "smart baseline 0.0666666666666667"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair2 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 22    NumFrequentItems = 22  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 2
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 33 frequent items and 17 consequents 
+ Performing item:      1234567891011121314151622.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 94 rules. Performing rule           012345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394
+   
+Building Prediction Model from derived 94 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\| 
+
+Total Time spent = 0 hrs 0 mts 1 secs 991 millis
+
+[1] "completeness 0.666666666666667"
+[1] "def rank % in fold  0"
+[1] "fold 2 : gamma= 1  | completeness= 0.666666666666667  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= -0.111111111111111"
+[1] "smart baseline 0.0666666666666667"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair2 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 21    NumFrequentItems = 21  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 2
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 32 frequent items and 17 consequents 
+ Performing item:      12345678910111213141521.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 98 rules. Performing rule           01234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798
+   
+Building Prediction Model from derived 98 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\| 
+
+Total Time spent = 0 hrs 0 mts 1 secs 571 millis
+
+[1] "completeness 0.666666666666667"
+[1] "def rank % in fold  0"
+[1] "fold 3 : gamma= 1  | completeness= 0.666666666666667  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= 0.244444444444444"
+[1] "smart baseline -0.0222222222222222"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair2 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 21    NumFrequentItems = 21  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 2
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 32 frequent items and 17 consequents 
+ Performing item:      12345678910111213141521.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 98 rules. Performing rule           01234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798
+   
+Building Prediction Model from derived 98 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\| 
+
+Total Time spent = 0 hrs 0 mts 2 secs 188 millis
+
+[1] "completeness 0.666666666666667"
+[1] "def rank % in fold  0"
+[1] "fold 4 : gamma= 1  | completeness= 0.666666666666667  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= -0.0666666666666667"
+[1] "smart baseline -0.244444444444444"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair2 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 20    NumFrequentItems = 20  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 2
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 31 frequent items and 17 consequents 
+ Performing item:      123456789101112131420.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 82 rules. Performing rule           012345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182
+   
+Building Prediction Model from derived 82 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\| 
+
+Total Time spent = 0 hrs 0 mts 1 secs 416 millis
+
+[1] "completeness 0.666666666666667"
+[1] "def rank % in fold  0"
+[1] "fold 5 : gamma= 0.933333333333333  | completeness= 0.666666666666667  | accuracy= 0.933333333333333  | %defrank= 0"
+[1] "baseline tau= -0.111111111111111"
+[1] "smart baseline -0.0222222222222222"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair2 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 20    NumFrequentItems = 20  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 2
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 31 frequent items and 17 consequents 
+ Performing item:      123456789101112131420.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 85 rules. Performing rule           012345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485
+   
+Building Prediction Model from derived 85 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\ 
+
+Total Time spent = 0 hrs 0 mts 2 secs 168 millis
+
+[1] "completeness 0.666666666666667"
+[1] "def rank % in fold  0"
+[1] "fold 6 : gamma= 1  | completeness= 0.666666666666667  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= 0.244444444444444"
+[1] "smart baseline 0.155555555555556"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair2 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 19    NumFrequentItems = 19  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 2
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 30 frequent items and 17 consequents 
+ Performing item:      1234567891011121319.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 91 rules. Performing rule           012345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091
+   
+Building Prediction Model from derived 91 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/ 
+
+Total Time spent = 0 hrs 0 mts 1 secs 732 millis
+
+[1] "completeness 0.666666666666667"
+[1] "def rank % in fold  0"
+[1] "fold 7 : gamma= 0.933333333333333  | completeness= 0.666666666666667  | accuracy= 0.933333333333333  | %defrank= 0"
+[1] "baseline tau= -0.0666666666666667"
+[1] "smart baseline 0.111111111111111"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair2 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 21    NumFrequentItems = 21  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 2
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 32 frequent items and 17 consequents 
+ Performing item:      12345678910111213141521.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 89 rules. Performing rule           01234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889
+   
+Building Prediction Model from derived 89 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\ 
+
+Total Time spent = 0 hrs 0 mts 2 secs 158 millis
+
+[1] "completeness 0.666666666666667"
+[1] "def rank % in fold  0"
+[1] "fold 8 : gamma= 0.8  | completeness= 0.666666666666667  | accuracy= 0.866666666666667  | %defrank= 0"
+[1] "baseline tau= 0.377777777777778"
+[1] "smart baseline 0.377777777777778"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair2 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 20    NumFrequentItems = 20  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 2
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 31 frequent items and 17 consequents 
+ Performing item:      123456789101112131420.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 85 rules. Performing rule           012345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485
+   
+Building Prediction Model from derived 85 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\ 
+
+Total Time spent = 0 hrs 0 mts 1 secs 906 millis
+
+[1] "completeness 0.666666666666667"
+[1] "def rank % in fold  0"
+[1] "fold 9 : gamma= 0.933333333333333  | completeness= 0.666666666666667  | accuracy= 0.933333333333333  | %defrank= 0"
+[1] "baseline tau= 0.244444444444444"
+[1] "smart baseline 0.333333333333333"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair2 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 20    NumFrequentItems = 20  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 2
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 31 frequent items and 17 consequents 
+ Performing item:      123456789101112131420.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 78 rules. Performing rule           0123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778
+   
+Building Prediction Model from derived 78 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\| 
+
+Total Time spent = 0 hrs 0 mts 1 secs 252 millis
+
+[1] "completeness 0.666666666666667"
+[1] "def rank % in fold  0"
+[1] "fold 10 : gamma= 1  | completeness= 0.666666666666667  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= -0.0666666666666667"
+[1] "smart baseline 0.0222222222222222"
+
+###############  iris  ############### 
+# confidence: 0.7 
+# max pairs: 2 
+# calculated support: 0.01 
+#
+# gamma: 0.96 
+# completeness: 0.67 
+# accuracy: 0.97 
+# def.rank: 0 
+# rules: 53 
+#
+# baseline (gamma): 0.09 
+%RFORMAT%iris%0.7%2%0.01%0.96%0.67%0.97%0%53%0.09%0
+###################################### 
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair3 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 20    NumFrequentItems = 20  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 3
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 36 frequent items and 22 consequents 
+ Performing item:      123456789101112131420.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 102 rules. Performing rule           0123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102
+   
+Building Prediction Model from derived 102 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\| 
+
+Total Time spent = 0 hrs 0 mts 1 secs 216 millis
+
+[1] "completeness 1"
+[1] "def rank % in fold  0"
+[1] "fold 1 : gamma= 1  | completeness= 1  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= 0.2"
+[1] "smart baseline 0.0666666666666667"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair3 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 22    NumFrequentItems = 22  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 3
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 38 frequent items and 22 consequents 
+ Performing item:      1234567891011121314151622.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 119 rules. Performing rule           0123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119
+   
+Building Prediction Model from derived 119 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/ 
+
+Total Time spent = 0 hrs 0 mts 1 secs 267 millis
+
+[1] "completeness 1"
+[1] "def rank % in fold  0"
+[1] "fold 2 : gamma= 1  | completeness= 1  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= -0.111111111111111"
+[1] "smart baseline 0.0666666666666667"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair3 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 21    NumFrequentItems = 21  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 3
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 37 frequent items and 22 consequents 
+ Performing item:      12345678910111213141521.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 123 rules. Performing rule           0123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123
+   
+Building Prediction Model from derived 123 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/ 
+
+Total Time spent = 0 hrs 0 mts 1 secs 92 millis
+
+[1] "completeness 1"
+[1] "def rank % in fold  0"
+[1] "fold 3 : gamma= 1  | completeness= 1  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= 0.244444444444444"
+[1] "smart baseline -0.0222222222222222"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair3 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 21    NumFrequentItems = 21  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 3
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 37 frequent items and 22 consequents 
+ Performing item:      12345678910111213141521.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 124 rules. Performing rule           0123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124
+   
+Building Prediction Model from derived 124 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/- 
+
+Total Time spent = 0 hrs 0 mts 1 secs 226 millis
+
+[1] "completeness 1"
+[1] "def rank % in fold  0"
+[1] "fold 4 : gamma= 1  | completeness= 1  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= -0.0666666666666667"
+[1] "smart baseline -0.244444444444444"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair3 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 20    NumFrequentItems = 20  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 3
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 36 frequent items and 22 consequents 
+ Performing item:      123456789101112131420.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 102 rules. Performing rule           0123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102
+   
+Building Prediction Model from derived 102 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\| 
+
+Total Time spent = 0 hrs 0 mts 1 secs 580 millis
+
+[1] "completeness 1"
+[1] "def rank % in fold  0"
+[1] "fold 5 : gamma= 1  | completeness= 1  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= -0.111111111111111"
+[1] "smart baseline -0.0222222222222222"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair3 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 20    NumFrequentItems = 20  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 3
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 36 frequent items and 22 consequents 
+ Performing item:      123456789101112131420.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 108 rules. Performing rule           0123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108
+   
+Building Prediction Model from derived 108 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/- 
+
+Total Time spent = 0 hrs 0 mts 2 secs 68 millis
+
+[1] "completeness 1"
+[1] "def rank % in fold  0"
+[1] "fold 6 : gamma= 1  | completeness= 1  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= 0.244444444444444"
+[1] "smart baseline 0.155555555555556"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair3 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 19    NumFrequentItems = 19  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 3
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 35 frequent items and 22 consequents 
+ Performing item:      1234567891011121319.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 118 rules. Performing rule           0123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118
+   
+Building Prediction Model from derived 118 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\| 
+
+Total Time spent = 0 hrs 0 mts 1 secs 501 millis
+
+[1] "completeness 1"
+[1] "def rank % in fold  0"
+[1] "fold 7 : gamma= 1  | completeness= 1  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= -0.0666666666666667"
+[1] "smart baseline 0.111111111111111"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair3 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 21    NumFrequentItems = 21  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 3
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 37 frequent items and 22 consequents 
+ Performing item:      12345678910111213141521.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 112 rules. Performing rule           0123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112
+   
+Building Prediction Model from derived 112 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/- 
+
+Total Time spent = 0 hrs 0 mts 2 secs 593 millis
+
+[1] "completeness 1"
+[1] "def rank % in fold  0"
+[1] "fold 8 : gamma= 0.866666666666667  | completeness= 1  | accuracy= 0.933333333333333  | %defrank= 0"
+[1] "baseline tau= 0.377777777777778"
+[1] "smart baseline 0.377777777777778"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair3 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 20    NumFrequentItems = 20  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 3
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 36 frequent items and 22 consequents 
+ Performing item:      123456789101112131420.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 108 rules. Performing rule           0123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108
+   
+Building Prediction Model from derived 108 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/- 
+
+Total Time spent = 0 hrs 0 mts 1 secs 939 millis
+
+[1] "completeness 1"
+[1] "def rank % in fold  0"
+[1] "fold 9 : gamma= 1  | completeness= 1  | accuracy= 1  | %defrank= 0"
+[1] "baseline tau= 0.244444444444444"
+[1] "smart baseline 0.333333333333333"
+
+ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.el6_9.x86_64/jre/bin/java  -Xmx2000M -classpath /homes/up201402671/data/R/lib/carenR/exec caren caren_temp.bas 0.01 0.7          -null?    -classL1 -HL1 -pRulesTemp -ocsRulesTemp   -RANK1,1 -fisher -Pair3 -nodefault -nodef -RS4 -Att -s,  
+    
+CareN - (Depth First Expansion for classification 1.4)   version  2.6.4  (beta)
+Attribute/Value mode
+Reading data...NumOfAtribs = 6 MinSup = 0.01000    SupAbsValue = 2     MinConf =  0.70000  NumOfRecords = 135   DataSet = caren_temp.bas  
+Class Attribute = L1
+NumItems = 20    NumFrequentItems = 20  
+ end counting 1-itemsets ....
+ end bitmaps mounting....
+ Deriving rules ...... for max size = 4
+ Deriving Pairwise Label Ranking association rules for max pairs = 3
+ Filtering rules using minimal Confidence  
+ Filtering insignificant rules using Fisher exact Test with alpha  = 0.05
+ Depth-First Expansion....
+ Applying on 36 frequent items and 22 consequents 
+ Performing item:      123456789101112131420.
+  
+End of rules generation ......
+
+ 
+No default rules were derived!  
+
+Writing CSV file....  
+writing 97 rules. Performing rule           012345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697
+   
+Building Prediction Model from derived 97 Label Ranking Association Rules....
+Saving all default rules...
+
+Saving model...
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\ 
+
+Total Time spent = 0 hrs 0 mts 1 secs 141 millis
+
+[1] "completeness 1"
+[1] "def rank % in fold  0"
+[1] "fold 10 : gamma= 0.866666666666667  | completeness= 1  | accuracy= 0.933333333333333  | %defrank= 0"
+[1] "baseline tau= -0.0666666666666667"
+[1] "smart baseline 0.0222222222222222"
+
+###############  iris  ############### 
+# confidence: 0.7 
+# max pairs: 3 
+# calculated support: 0.01 
+#
+# gamma: 0.97 
+# completeness: 1 
+# accuracy: 0.99 
+# def.rank: 0 
+# rules: 23 
+#
+# baseline (gamma): 0.09 
+%RFORMAT%iris%0.7%3%0.01%0.97%1%0.99%0%23%0.09%0
+###################################### 
+> 
+> # sink(type = "message")
+> # sink()
+> # file.show("all.Rout")
+> # print("done")
+> 
+> 
+> 
+> 
+> 
+> 
+> 

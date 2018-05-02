@@ -1,0 +1,35 @@
+germany 2005 2009
+
+Registrd.Web.Doms = 23 \& No.school.degree = 20 -> b > c \& b > e (s=81.31; c=100)
+
+Registrd.Web.Doms = 23 \& No.school.degree = 20 -> a > c \& b > e (s=81.31; c=100)
+
+Registrd.Web.Doms = 23 \& No.school.degree = 20 -> b > d \& b > e (s=81.31; c=100)
+
+Registrd.Web.Doms = 23 \& No.school.degree = 20 -> a > d \& b > e (s=81.31; c=100)
+
+Old.Pop. = 7 -> b > c \& b > e (s=80.58; c=100)
+
+portugal 2009 2013
+
+X.Employees.per.Sector.Construction = 46 \& X.Employees.per.Economic.Sector.Others = 61 -> PS > BE \& PS > CDS.PP (s=42.53; c=100)
+
+X.Population.without.Education = 17 \& X.Employees.per.Sector.Administration.and.Services = 53 \& X.Employees.per.Economic.Sector.Others = 61 -> PS > BE \& PS > PCP.PEV (s=16.88; c=100)
+
+X.Population.without.Education = 19 \& X.Employees.per.Sector.Agriculture = 33 -> PS > BE \& PS > PCP.PEV (s=15.58; c=100)
+
+X.Residents.15.64 = 12 \& X.Employees.per.Sector.Administration.and.Services = 53 \& X.Employees.per.Economic.Sector.Others = 61 -> PS > BE \& PS > PCP.PEV (s=15.58; c=100)
+
+X.Employees.per.Economic.Sector.Banks = 58 \& X.Employees.per.Sector.Construction = 46 -> PS > CDS.PP \& PS > PCP.PEV (s=10.06; c=100)
+
+portugal 2013 2017
+
+X.Employees.per.Sector.Construction = 45 \& X.Employees.per.Sector.Administration.and.Services = 53 \& X.Employees.per.Economic.Sector.Banks = 57 -> PCP.PEV > BE \& PS > BE (s=24.03; c=100)
+
+X.Unemployment..25 = 74 \& X.Employees.per.Sector.Transformation.Industries = 41 \% X.Employees.per.Sector.Gross.and.Retails.Markets = 50 -> PCP.PEV > BE \& PS > BE (s=18.18; c=100)
+
+Average.Monthly.Income = 30 \% X.Employees.per.Sector.Transformation.Industries = 41 \& X.Employees.per.Sector.Gross.and.Retails.Markets = 50 -> PCP.PEV > BE \& PS > BE (s=17.53; c=100)
+
+X.Population.without.Education = 17 \% X.Employees.per.Sector.Administration.and.Services = 53 -> PSD > BE \& PS > BE (s=17.21; c=100)
+
+X.Employees.per.Sector.Transformation.Industries = 42 \& Average.Monthly.Income = 31 -> PSD > BE \& PS > BE (s=16.88; c=100)

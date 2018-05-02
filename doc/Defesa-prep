@@ -1,0 +1,177 @@
+Boa tarde, em primeiro lugar gostaria de agradecer a presença nesta apresentação
+O meu nome é Miguel Pereira  e vou apresentar o meu projeto de dissertação
+Label Ranking para Previsão de Resultados Eleitorais
+Este trabalho foi supervisionado pelos professores Cláudio Sá e Carlos Soares
+-----
+A estrutura da apresentação vai ser a seguinte
+Inicialmente farei uma introdução ao contexto do problema, à motivação e aos objectivos
+De seguida passarei pelos vários tópicos que vão ser abordados, nomeadamente
+Previsão de eleições, Regras de associação, Label Rankinge e Pairwise Association Rules
+De seguida vou abordar o setup experimental realizado,
+rematando com os resultados, análise e conclusões
+-----
+()
+-----
+Dividindo a introdução em contexto, problema e previsão
+-----
+O contexto deste trabalho insere-se no domínio das abordagens para previsão de resultados eleitorais
+O ato de prever quem vai ganhar determinadas eleições já é antigo.
+Atualmentente, para além dos métodos clássicos, como os baseados em sondagens, existem outras técnicas, nomeadamente baseadas em data mining e machine learning, que nos permitem extrair mais informação das novas fontes de dados que existem, como por exemplo redes sociais.
+-----
+No entanto, os métodos atuais têm que lidar com situações complexas.
+Sondagens, por exemplo, têm que lidar com o problema do anonimato, enquanto métodos modernos que usam dados de redes sociais, como a análise de sentimento de por exemplo tweets têm que lidar com ironia e sarcasmo, entre outros
+-----
+Neste trabalho, também propomos lidar com o problema da previsão de eleições com recurso a data mining e machine learning, mas usando preference learning, e mais especificamente label ranking. 
+Estas técnicas vão-nos permitir estudar as relações entre variáveis socio-economicas e a ordem em que os partidos ficam num ato eleitoral
+-----
+Falando brevemente de previsão de eleições
+-----
+Podemos dizer que a ciência da previsão de eleições consiste em declarar a priori o resultado de um ato eleitoral com base nos resultados de um conjunto pre-definido de métodos
+Se inicialmente a ciência política e a matemática eram areas bem separadas, essa realidade é completamente oposta hoje em dia.
+Contemporaneamente, para estudar fenómenos políticos como eleições são feitos desde estudos estatisticos com base em sondagens, até  modelos baseados em data mining e machine learning.
+Um exemplo é um projeto denominado POPmine feito em parceira com a FEUP que usa Sentiment Analysis para fazer a análise de sentimentos em tweets em referência a entidades poíticas
+As técnicas usadas neste trabalho vão então ser focadas em previsão de eleições
+-----
+Para falar dessas técnicas, vou agora introduzir a geração de regras de associação
+-----
+A geração de regras de associação é uma técnica de data mining que tenta extrair correlações de um conjunto de items, sendo essas correlações em forma de regras de associação, aqui formalizadas, que consistem em:
+se A antecenente(parte esquerda) então C consequente(parte direita)
+-----
+Um exemplo concreto famoso é o market basket analysis, onde esta técnica foi aplicada e foi descoberta a regra de associação que diz que se compras fraldas então também compras cerveja
+-----
+A geração deste tipo de regras, no entanto, pode-se tornar muito extensa, e por isso é preciso definir medidas que interesse que façam o pruning, ou seja que limitem, a geração de regras.
+4 das mais usadas são o suporte, a confiança, o lift, e o improvement
+-----
+Os algoritmos que exitem para a geração de regras de associação podem ser divididos conforme são baseados em itemsets ou em regras. 
+A diferença é que enquanto os baseados em itemsets, como o APRIORI, primeiro calculam os itemsets frequentes e depois fazem a geração de regras, os baseados em regras, como o FP Growth fazem estes dois processos em simultaneo.
+Com a geração de regras de associação introduzida, vamos falar agora de Label Ranking
+-----
+Label ranking é uma tecnica de Preference learning, que é o estudo da descoberta de padrões em preferências.
+-----
+Para um conjunto de classes Lambda e um espaço de permutações Omega onde se encontram as regras podemos dizer que
+-----
+o objectivo de Label Ranking é prever a ordem de um conjunto predefinido de classes
+olhando para um exemplo concreto, temos as marcas de carros BMW Mercedes Volvo e Fiat como as nossas classes
+Label Ranking quem prever um ranking dessas classes, como por exemplo eg1 -- 3
+Estes rankings que vemos aqui, por exemplo eg2 podem ser decompostos em
+-----
+Pairwise comparisons. Isto significa decompor o ranking em relações de preferência binárias, ou seja, entre duas classes.
+Isto tem a vantagem de permitir representar um ranking numa matrix chamada pairwise matrix
+-----
+Para formalizar o conceito de ranking, sabemos então que ele pode ser representado por ordens, como Volvo é preferido a Mercedes
+Os rankings podem ser de 3 tipos:
+completos: se existe uma relação de ordem entre todas as classes
+parciais: se considera empates, e
+incompletos: se existem classes sobre a qual não há informação de ordem. por exemplo em l1>l3>l4 não existe informação sobre a classe 2
+-----
+Como vimos anteriormente, os ranking podem ser decompostos, por exemplo em pairwise comaparisons. Os métodos existentes de Label Ranking podem ser divididos consoante tratam o problema usando o ranking completo, que é o caso dos métodos diretos como Label Ranking Association Rules, ou LRAR
+ou decompõem o problema em subproblemas mais pequenos, como é o caso de Pairwise Association Rules, ou PAR
+-----
+As LRAR são uma adaptação direta das regras de associação em que o consequente, em vez de ser uma classe, é um ranking
+-----
+Por exemplo uma regra que LRAR pode encontrar é se a idade de um individuo for igual ou superior a 35 anos e possuir um douturamento, então essa pessoa prefere volvo a mercedes a bmw a fiat
+-----
+Pairwise Association Rules, que são o foco deste trabalho, são também uma adaptação de regras de associação para Label Ranking. No entanto a grande diferença é que
+-----
+estas não lidam com ranking completos mas sim com rankings incompletos em forma de pairwise comparisons. ou seja, pode haver classes sobre a qual não existe informação
+-----
+um exemplo que ilustra esta diferença é o seguinte
+a vantagem aqui é que pode não existir informação suficiente para encontrar uma regra com LRAR.
+no entanto pode existir informação suficiente para se encontrar uma regra com PAR
+-----
+Até agora as PAR foram só usadas de forma descritiva.
+No entanto uma das contribuições deste trabalho foi adaptar as PAR para previsão
+A motivação por detrás deste uso reside fundamentalmente no facto de com PAR ser possível gerar regras com menos informação.
+Com isso nós vamos estudar o impacto dessa menor informação e se, prevendo menos, conseguimos fazer previsões mais precisas
+para usar PAR para previsão precisamos de definir 3 aspectos:
+a seleção das regras, o número máximo de pairwises e a completeness
+-----
+primeiro, temos que escolher dentro das regras geradas e das que se aplicam a uma determinada instância quais a que vamos usar para fazer a previsão
+-----
+segundo, é preciso definir o maxpairs, o número maximo que pairwise comparisons que vão estar presentes no consequente das regras
+este valor é essencial ser definido por causa da completeness
+-----
+a completeness é uma medida que propomos para avaliar quanto está a ser previsto
+como em PAR podemos ter regras com mais ou menos informação no consequente, queremos estudar o impacto da quantidade de informação na precisão das previsões
+-----
+Para avaliar tanto LRAR com PAR existem medidas de correlação como Kendall Tau ou para LRAR ou Gamma para as PAR, e estas duas são as que vamos utilizar visto que são equivalentes e podemos usar para comparar LRAR com PAR
+-----
+adicionalmente para avaliar as previsões feitas com PAR vamos também usar uma medida de accuracy semelhante à accuracy usada em métodos de classificação de machine learning
+isto porque PAR sacrifica informação por isso queriamos uma medida mais penalizadora
+-----
+esta accuracy tem um score de 0 ou 1, obtendo 1 se todas as pairwise comparisons estiverem corretas e zero em todos os outros casos
+-----
+-----
+os dados que vão ser usados para previsão estão dividos em dois grupos
+-----
+primeiro vamos testar o nosso modelo em datasets tipicamente usados em label ranking
+isto tem o objetivo de testar e validar a nossa abordagem
+-----
+para prever nestes dados usamos 10-Fold Cross Validation, em que basicamente dividimos o dataset em 10 partes, e para cada iteração de 1 a 10 treinamos o modelo numa parte e testamos nas restantes
+-----
+De seguida vamos testar em datasets de variáveis socio-económicas de anos de eleições regionais, que têm os votos que cada partido obteve
+ou seja nestes datsets, as instâncias são as regiões dos países
+enquanto 2 destes datasets, os alemães, são provenientes de um estudo anterior, os de portugal foram criados por nós
+-----
+as variáveis socio-economicas destes datasets portugueses, em que alguns exemplos podem aqui ser vistos, foram obtidas através da PORDATA, uma base de dados portuguesa
+-----
+como no caso das eleições é mais interessante prever de um ano particular, foi exactamente isso que fizemos, o que cria 3 casos de estudo
+-----
+para a parte expecífica da geração e previsão com PAR
+-----
+nós usamos um software chamado Caren para fazer a geração das regras
+para essa geração tivemos que definir o mínimo para as medidas de interessa
+-----
+em particular, foi importante desligar o improvement, isto porque no nosso caso particular vamos estudar o impacto da variação da completeness.
+assim, não queremos limitar a geração de regras que possam ser usadas, mesmo que não haja ganho de confiança
+-----
+para a seleção das regras e previsão, nós usamos somente a melhor regra encontrada, ou seja, com maior suporte e confiança
+isto porque o nosso modelo prevê menos, logo é importante que o faça com a maior certeza possível
+-----
+Passando agora para a parte dos resultados
+-----
+Olhando então primeiro para a previsão usando os datasets de label ranking comuns
+-----
+Podemos ver uma ganho da precisão das previsões usando PAR, neste aqui avaliada com o kendall tau e o gamma
+-----
+Por exemplo olhando para o caso do cpu-small, podemos ver que passamos de 0.45 para 0.81 usando PAR com uma pairwise comparison. Podemos também ver que há medida que vamos adicionando pairwise comparisons no consequente, ou seja aumentando a completeness, a precisão desce
+-----
+Vendo agora os resutaldos usando PAR para todos os datasets em gráfico, podemos ver mais claramente o tradeoff entre a completeness com qual fazemos uma previsão, e a precisão dessa mesma previsão
+Conseguimos ver também que esse comportamento não é uniforme em todos os datasets
+-----
+agrupando os datasets por número de classes, conseguimos ver que parece existir uma relação entre o número de classes e o impacto que a completeness tem na previsão.
+os resultados parecem indicar que quanto menor é o número de classes menor é o impacto da completeness
+-----
+Tendo validado a nossa abordagem passamos para a previsão nos datasets eleitorais
+-----
+Como podemos ver, e de acordo com os resultados anteriores, as previsões usando PAR com 1 pairwise comparison tiveram todas precisão superior a usar LRAR
+-----
+Olhando para o gráfico, vemos igualmente que aumentar a completeness se traduz numa perda de precisão
+-----
+Olhando para estes datasets em conjunto com todos os outros, podemos ver que o comportamento face ao número de classes parece efectivamente verificar-se
+-----
+Uma das vantagens de usar PAR para previsão é que são um método descritivo, ou seja, é possível analisar as regras usadas na previsão e o porquê de uma determinada previsão ter sido feita
+-----
+aqui podemos ver a melhor regra encontrada para cada um dos datasets de eleições usados para treino
+podemos então ver, por exemplo olhando para portugal 2013, que para uma determinada região xxx < 14% então PCP é preferido a BE
+olhando para a regra encontrada no dataset alemão, podemos ver um suporte bastante alto, pouco comum em problemas de label ranking. no entanto,
+-----
+se olharmos para este mapa, podemos ver que existe um partido, a CDU, claramente dominante, e que é facil encontrar regras com grande suporte envolvendo esse partido
+-----
+E com isto partimos finalmente para as conclusões
+-----
+Primeiro, provamos que PAR são uma solida alternativa para resolver problemas complexos de label ranking e que 
+-----
+em situações onde é preferivel prever com muita certeza, prever usando PAR dá uma contribuição interessante
+-----
+também contribuimos para a comunidade de label ranking com 3 datasets com valores reais, o que é dificil de encontrar neste campo
+-----
+No entanto, exactamente porque o nosso modelo se restringe a prever com muita confiança, a aplicação em previsão de eleições pode não ser o melhor use-case
+-----
+porque como vimos alguns partidos dominam claramente o cenário político, o que leva a datasets para label ranking desiquilibrados
+-----
+Para futuro sugerimos otimizar a geração de regras, melhorar a geração de regras com vários items no consequente
+-----
+Finalmente sugerimos estudar a agregação de regras pelo seu consequente, para evitar usar regras muito semelhantes para previsão
+-----
+Obrigado

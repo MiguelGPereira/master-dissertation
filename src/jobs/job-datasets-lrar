@@ -1,0 +1,31 @@
+[1] "final tau= 0.86"
+[1] "final baseline tau= 0.09"
+%RFORMAT%iris%0.7%NA%0.01%0.86%NA%NA%NA%NA%0.09%0
+
+[1] "final tau= 0.02"
+[1] "final baseline tau= -0.04"
+%RFORMAT%bodyfat%0.7%NA%0.01%0.02%NA%NA%NA%NA%-0.04%0
+
+[1] "final tau= 0.71"
+[1] "final baseline tau= 0.68"
+%RFORMAT%glass%0.7%NA%0.01%0.71%NA%NA%NA%NA%0.68%0
+
+[1] "final tau= 0.69"
+[1] "final baseline tau= 0.05"
+%RFORMAT%housing%0.7%NA%0.01%0.69%NA%NA%NA%NA%0.05%0
+
+[1] "final tau= 0.82"
+[1] "final baseline tau= 0.06"
+%RFORMAT%stock%0.7%NA%0.01%0.82%NA%NA%NA%NA%0.06%0
+
+[1] "final tau= 0.82"
+[1] "final baseline tau= 0.18"
+%RFORMAT%vehicle%0.7%NA%0.01%0.82%NA%NA%NA%NA%0.18%0
+
+[1] "final tau= 0.92"
+[1] "final baseline tau= 0.33"
+%RFORMAT%wine%0.7%NA%0.01%0.92%NA%NA%NA%NA%0.33%0
+
+[1] "final tau= 0.45"
+[1] "final baseline tau= 0.23"
+%RFORMAT%cpu-small%0.7%NA%0.01%0.45%NA%NA%NA%NA%0.23%0

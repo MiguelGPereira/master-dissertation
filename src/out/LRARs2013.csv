@@ -1,0 +1,309 @@
+;;BE;CDS.PP;PCP.PEV;PPD.PSD;PS;changes;BE;CDS.PP;PCP.PEV;PPD.PSD;PS
+1;Arcos de Valdevez;5;3;4;1;2;none;NA;1;1;-1;NA
+2;Caminha;4;4;3;2;1;none;1;NA;-1;NA;-1
+3;Melgaco;4;4;3;2;1;none;1;NA;1;-1;NA
+4;Moncao;5;3;4;2;1;none;1;NA;-1;NA;-1
+5;Paredes de Coura;5;4;3;2;1;none;1;NA;1;NA;-1
+6;Ponte da Barca;4;4;3;2;1;none;1;NA;1;-1;NA
+7;Ponte de Lima;5;1;4;2;3;none;1;NA;1;NA;-1
+8;Valenca;4;4;3;1;2;none;1;1;NA;NA;-1
+9;Viana do Castelo;5;4;3;2;1;none;1;NA;NA;-1;-1
+10;Vila Nova de Cerveira;4;4;3;2;1;none;1;NA;-1;NA;-1
+11;Amares;5;2;4;2;1;none;1;NA;NA;-1;-1
+12;Barcelos;4;2;5;2;1;none;1;NA;NA;-1;-1
+13;Braga;5;1;4;1;3;none;1;NA;NA;-1;-1
+14;Esposende;5;3;4;1;2;none;1;NA;NA;-1;-1
+15;Terras de Bouro;5;2;4;2;1;none;1;NA;-1;NA;-1
+16;Vila Verde;5;3;4;1;2;none;1;NA;1;NA;-1
+17;Cabeceiras de Basto;5;2;4;2;1;none;1;NA;1;NA;-1
+18;Fafe;5;4;3;2;1;none;1;NA;NA;-1;-1
+19;Guimaraes;5;2;4;2;1;none;1;NA;-1;NA;-1
+20;Mondim de Basto;4;2;3;4;1;none;1;NA;-1;NA;-1
+21;Povoa de Lanhoso;5;3;4;1;2;none;1;NA;1;NA;-1
+22;Vieira do Minho;5;1;4;1;3;none;1;NA;-1;NA;-1
+23;Vila Nova de Famalicao;5;1;4;1;3;none;1;NA;-1;NA;-1
+24;Vizela;5;2;4;2;1;none;1;NA;-1;NA;-1
+25;Arouca;5;3;4;2;1;none;1;NA;1;NA;-1
+26;Espinho;4;5;3;1;2;none;1;NA;NA;-1;-1
+27;Gondomar;5;2;4;2;1;none;1;NA;NA;-1;-1
+28;Maia;5;1;4;1;3;none;1;NA;NA;-1;-1
+29;Matosinhos;4;5;3;2;1;none;1;NA;-1;-1;NA
+30;Oliveira de Azemeis;5;3;4;1;2;none;1;NA;1;-1;-1
+31;Paredes;5;4;3;1;2;none;1;NA;NA;-1;-1
+32;Porto;4;5;3;2;1;none;1;NA;1;NA;-1
+33;Povoa de Varzim;5;3;4;1;2;none;1;NA;-1;NA;-1
+34;Santa Maria da Feira;4;5;3;1;2;none;1;NA;-1;NA;-1
+35;Santo Tirso;5;4;3;2;1;none;1;NA;-1;NA;-1
+36;Sao Joao da Madeira;5;4;3;1;2;none;1;NA;NA;-1;-1
+37;Trofa;5;1;4;1;3;none;1;NA;-1;NA;-1
+38;Vale de Cambra;5;1;4;2;3;none;1;NA;-1;NA;-1
+39;Valongo;4;5;3;2;1;none;1;NA;NA;-1;-1
+40;Vila do Conde;5;4;3;2;1;none;1;NA;NA;-1;-1
+41;Vila Nova de Gaia;5;2;4;2;1;none;1;NA;NA;-1;-1
+42;Boticas;4;4;3;1;2;none;1;NA;NA;NA;-1
+43;Chaves;5;4;3;1;2;none;1;NA;-1;NA;-1
+44;Montalegre;5;2;4;2;1;none;1;NA;NA;NA;-1
+45;Ribeira de Pena;5;3;4;2;1;none;NA;1;1;-1;NA
+46;Valpacos;5;3;4;1;2;none;1;NA;NA;NA;-1
+47;Vila Pouca de Aguiar;5;4;3;1;2;none;NA;1;NA;-1;-1
+48;Amarante;5;1;4;1;3;none;1;NA;NA;-1;-1
+49;Baiao;5;3;4;2;1;none;1;NA;1;NA;-1
+50;Castelo de Paiva;5;4;3;2;1;none;1;NA;NA;-1;-1
+51;Celorico de Basto;5;3;4;1;2;none;1;NA;1;NA;-1
+52;Cinfaes;5;2;4;2;1;none;1;NA;1;NA;-1
+53;Felgueiras;5;3;4;1;2;none;1;NA;-1;NA;-1
+54;Lousada;5;2;4;2;1;none;1;NA;NA;-1;-1
+55;Marco de Canaveses;4;4;3;1;2;none;1;NA;NA;-1;-1
+56;Pacos de Ferreira;5;4;3;2;1;none;1;NA;-1;NA;-1
+57;Penafiel;5;1;4;1;3;none;1;NA;NA;-1;-1
+58;Resende;5;2;4;2;1;none;1;NA;-1;NA;-1
+59;Alijo;5;3;4;1;2;none;1;NA;-1;NA;-1
+60;Armamar;5;2;4;1;3;none;1;NA;-1;NA;-1
+61;Carrazeda de Ansiaes;5;2;4;1;3;none;1;NA;-1;NA;-1
+62;Freixo de Espada Ã…Â¡ Cinta;4;4;3;1;2;none;1;NA;1;-1;NA
+63;Lamego;5;1;4;1;3;none;1;NA;-1;NA;-1
+64;MesÃ¢Â€Â o Frio;5;3;4;2;1;none;1;NA;NA;NA;-1
+65;Moimenta da Beira;5;2;4;2;1;none;1;NA;-1;NA;-1
+66;Murca;5;3;4;2;1;none;1;NA;-1;NA;-1
+67;Penedono;5;3;4;1;2;PCP.PEV : { PS };1;NA;-1;-1;1
+68;Peso da Regua;4;4;3;1;2;none;1;NA;-1;NA;-1
+69;Sabrosa;4;4;3;2;1;none;1;NA;-1;NA;-1
+70;Santa Marta de PenaguiÃ¢Â€Â o;5;3;4;2;1;none;1;NA;-1;NA;-1
+71;Sao Joao da Pesqueira;5;3;4;1;2;none;1;NA;-1;NA;-1
+72;Sernancelhe;5;3;4;1;2;none;1;NA;-1;NA;-1
+73;Tabuaco;5;1;4;1;3;PS : { CDS.PP };1;1;NA;NA;-1
+74;Tarouca;4;3;5;1;2;none;1;NA;1;NA;-1
+75;Torre de Moncorvo;5;1;4;1;3;none;1;NA;-1;NA;-1
+76;Vila Nova de Foz Coa;4;4;3;1;2;none;1;NA;-1;NA;-1
+77;Vila Real;5;3;4;2;1;none;1;NA;NA;-1;-1
+78;Alfandega da Fe;5;2;4;2;1;none;1;NA;-1;NA;-1
+79;Braganca;5;3;4;1;2;none;1;NA;-1;NA;-1
+80;Macedo de Cavaleiros;5;3;4;1;2;none;1;NA;-1;NA;-1
+81;Miranda do Douro;5;3;4;2;1;none;1;NA;-1;NA;-1
+82;Mirandela;5;3;4;1;2;none;1;NA;-1;NA;-1
+83;Mogadouro;5;3;4;2;1;none;1;NA;-1;NA;-1
+84;Vila Flor;5;2;4;2;1;none;1;NA;-1;NA;-1
+85;Vimioso;4;4;3;1;2;none;1;NA;-1;NA;-1
+86;Vinhais;4;2;3;4;1;none;1;NA;-1;NA;-1
+87;AlcobaÃ‚Âça;5;3;4;1;2;none;1;NA;-1;NA;-1
+88;Alenquer;5;2;4;2;1;none;1;NA;NA;-1;-1
+89;Arruda dos Vinhos;5;4;3;2;1;none;1;NA;-1;NA;-1
+90;Bombarral;5;4;3;1;2;none;1;NA;-1;NA;-1
+91;Cadaval;5;4;3;1;2;none;1;NA;-1;NA;-1
+92;Caldas da Rainha;5;3;4;1;2;none;1;NA;-1;-1;NA
+93;Lourinha;5;2;4;2;1;none;1;NA;-1;NA;-1
+94;Nazare;5;4;3;2;1;none;1;NA;NA;-1;-1
+95;Obidos;5;4;3;1;2;none;1;NA;-1;NA;-1
+96;Peniche;5;4;1;3;2;none;1;NA;-1;NA;-1
+97;Sobral de Monte AgraÃ‚Âço;5;3;1;3;2;none;1;NA;NA;-1;-1
+98;Torres Vedras;5;4;3;2;1;none;1;NA;-1;NA;-1
+99;Agueda;5;2;4;2;1;none;1;NA;-1;NA;-1
+100;Albergaria-a-Velha;5;1;4;2;3;none;1;NA;-1;NA;-1
+101;Anadia;5;3;4;1;2;none;1;NA;-1;NA;-1
+102;Aveiro;4;1;5;1;3;none;1;NA;NA;-1;-1
+103;Estarreja;5;1;4;1;3;none;1;NA;NA;-1;-1
+104;Ilhavo;5;3;4;1;2;none;1;NA;-1;NA;-1
+105;Murtosa;5;3;4;1;2;none;1;NA;-1;NA;-1
+106;Oliveira do Bairro;5;2;4;1;3;none;1;NA;-1;NA;-1
+107;Ovar;4;5;3;1;2;none;1;NA;-1;-1;NA
+108;Sever do Vouga;5;3;4;2;1;none;1;NA;-1;NA;-1
+109;Vagos;5;2;4;1;3;none;1;NA;-1;NA;-1
+110;Arganil;4;4;3;1;2;none;1;NA;1;NA;-1
+111;Cantanhede;5;4;3;1;2;none;1;NA;NA;-1;-1
+112;Coimbra;5;4;3;2;1;none;1;NA;-1;NA;-1
+113;Condeixa-a-Nova;3;5;4;2;1;none;1;NA;NA;-1;-1
+114;Figueira da Foz;5;2;4;2;1;none;1;NA;NA;-1;-1
+115;Gois;4;2;3;4;1;none;1;NA;-1;NA;-1
+116;Lousa;4;2;5;2;1;none;1;NA;NA;-1;-1
+117;Mealhada;5;2;4;2;1;none;1;NA;NA;-1;-1
+118;Mira;5;4;3;1;2;none;1;NA;-1;NA;-1
+119;Miranda do Corvo;5;2;4;2;1;none;1;NA;-1;NA;-1
+120;Montemor-o-Velho;5;2;4;2;1;none;1;NA;1;NA;-1
+121;MortÃ‹Â†gua;5;3;4;1;2;none;1;NA;NA;-1;-1
+122;Oliveira do Hospital;5;3;4;2;1;none;1;NA;1;NA;-1
+123;Pampilhosa da Serra;4;4;3;1;2;none;1;NA;-1;NA;-1
+124;Penacova;5;2;4;2;1;none;1;NA;-1;NA;-1
+125;Penela;5;4;3;1;2;none;1;NA;1;NA;-1
+126;Soure;5;2;4;2;1;none;1;NA;-1;NA;-1
+127;TÃ‹Â†bua;5;2;4;2;1;none;1;NA;-1;NA;-1
+128;Vila Nova de Poiares;5;4;3;2;1;none;1;NA;-1;NA;-1
+129;AlvaiÃ‹Â†zere;5;3;4;1;2;none;1;NA;-1;NA;-1
+130;AnsiÃ¢Â€Â o;5;3;4;1;2;none;1;NA;1;NA;-1
+131;Batalha;5;3;4;1;2;none;1;NA;NA;-1;-1
+132;Castanheira de PÃ‚Âêra;5;3;4;2;1;none;1;NA;NA;-1;-1
+133;Figueiro dos Vinhos;5;3;4;2;1;none;1;NA;-1;NA;-1
+134;Leiria;5;3;4;2;1;none;1;NA;NA;-1;-1
+135;Marinha Grande;4;5;2;3;1;PPD.PSD : { PCP.PEV };1;NA;1;-1;-1
+136;Pedrogao Grande;4;4;3;1;2;none;1;NA;-1;NA;-1
+137;Pombal;5;3;4;1;2;none;1;NA;NA;-1;-1
+138;Porto de Mos;5;3;4;2;1;none;1;NA;-1;NA;-1
+139;Aguiar da Beira;3;3;2;1;3;none;1;NA;-1;NA;-1
+140;Carregal do Sal;5;3;4;2;1;none;1;NA;1;NA;-1
+141;Castro Daire;5;3;4;2;1;none;1;NA;-1;NA;-1
+142;Mangualde;5;2;4;2;1;none;1;NA;-1;NA;-1
+143;Nelas;5;2;4;2;1;none;1;NA;1;-1;NA
+144;Oliveira de Frades;4;1;5;1;3;PCP.PEV : { BE };1;NA;-1;NA;-1
+145;Penalva do Castelo;5;2;4;2;1;none;1;NA;1;-1;NA
+146;Santa Comba Dao;5;3;4;2;1;none;1;NA;NA;-1;-1
+147;Sao Pedro do Sul;3;5;4;2;1;none;1;NA;1;NA;-1
+148;SÃ‹Â†tao;5;3;4;1;2;none;1;NA;1;NA;-1
+149;Tondela;5;3;4;1;2;none;1;NA;NA;-1;-1
+150;Vila Nova de Paiva;5;3;4;2;1;none;1;NA;-1;NA;-1
+151;Viseu;5;3;4;1;2;none;1;NA;-1;NA;-1
+152;Vouzela;3;4;5;1;2;none;1;NA;1;NA;-1
+153;Castelo Branco;5;4;3;2;1;none;1;NA;NA;-1;-1
+154;Idanha-a-Nova;5;4;3;2;1;none;1;NA;-1;NA;-1
+155;Oleiros;3;3;2;1;3;none;NA;1;1;-1;NA
+156;Penamacor;5;3;4;2;1;none;1;NA;-1;NA;-1
+157;Proenca-a-Nova;4;4;3;2;1;none;1;NA;1;NA;-1
+158;Vila Velha de Rodao;5;4;3;2;1;none;1;NA;-1;NA;-1
+159;Abrantes;4;5;3;2;1;none;1;NA;-1;NA;-1
+160;Alcanena;5;2;4;2;1;none;1;NA;-1;NA;-1
+161;ConstÃ…Â ncia;5;3;1;4;2;none;1;NA;NA;-1;-1
+162;Entroncamento;4;5;3;2;1;none;1;NA;NA;-1;-1
+163;Ferreira do Zezere;5;3;4;1;2;none;1;NA;1;-1;NA
+164;Macao;5;4;3;1;2;none;1;NA;1;NA;-1
+165;Ourem;5;2;4;2;1;none;1;NA;NA;-1;-1
+166;Sardoal;4;4;3;1;2;none;1;NA;-1;NA;-1
+167;Serta;5;3;4;1;2;none;1;NA;1;NA;-1
+168;Tomar;4;5;3;2;1;none;1;NA;NA;-1;-1
+169;Torres Novas;4;5;3;2;1;none;1;NA;NA;-1;-1
+170;Vila de Rei;5;3;4;1;2;none;1;1;NA;NA;-1
+171;Vila Nova da Barquinha;5;4;3;2;1;none;1;NA;1;NA;-1
+172;Almeida;5;1;4;1;3;none;1;NA;-1;NA;-1
+173;Belmonte;4;3;2;4;1;none;1;NA;-1;NA;-1
+174;Celorico da Beira;5;2;4;2;1;none;1;NA;1;NA;-1
+175;Covilha;4;5;3;2;1;none;1;NA;-1;NA;-1
+176;Figueira de Castelo Rodrigo;4;4;3;2;1;none;NA;1;NA;1;-1
+177;Fornos de Algodres;5;3;4;2;1;none;1;NA;-1;NA;-1
+178;Fundao;5;4;3;1;2;none;1;NA;-1;NA;-1
+179;Gouveia;5;1;4;1;3;none;1;NA;-1;NA;-1
+180;Guarda;5;1;4;1;3;none;1;NA;NA;-1;-1
+181;Manteigas;4;4;3;1;2;none;1;NA;-1;NA;-1
+182;Muda;5;2;4;3;1;none;1;1;NA;NA;-1
+183;Pinhel;5;3;4;1;2;none;1;NA;NA;NA;-1
+184;Sabugal;5;3;4;1;2;none;1;NA;-1;NA;-1
+185;Seia;5;2;4;2;1;none;1;NA;1;NA;-1
+186;Trancoso;5;3;4;2;1;none;1;NA;-1;NA;-1
+187;Alcochete;5;3;1;4;2;PPD.PSD : { CDS.PP };1;1;-1;-1;NA
+188;Almada;4;5;1;3;2;CDS.PP : { BE };1;-1;NA;NA;NA
+189;Amadora;5;3;2;3;1;none;1;-1;NA;1;-1
+190;Barreiro;4;5;1;3;2;none;1;1;-1;-1;NA
+191;Cascais;5;1;4;1;3;none;1;NA;-1;NA;-1
+192;Lisboa;5;2;4;2;1;none;1;NA;1;NA;-1
+193;Loures;4;5;1;3;2;none;1;1;-1;NA;-1
+194;Mafra;5;4;3;1;2;none;1;1;-1;-1;NA
+195;Moita;3;5;1;4;2;PPD.PSD : { BE };1;NA;NA;-1;-1
+196;Montijo;4;5;2;3;1;none;1;1;-1;-1;NA
+197;Odivelas;4;5;2;3;1;none;1;1;-1;NA;-1
+198;Oeiras;5;4;3;1;2;none;NA;1;-1;NA;-1
+199;Palmela;5;3;1;3;2;PS : { PCP.PEV };1;NA;1;NA;-1
+200;Seixal;4;5;1;3;2;CDS.PP : { BE };1;-1;NA;NA;NA
+201;Sesimbra;5;3;1;3;2;none;1;1;-1;-1;NA
+202;Setubal;5;3;1;3;2;none;1;NA;-1;NA;-1
+203;Sintra;5;2;4;2;1;none;1;NA;NA;-1;-1
+204;Vila Franca de Xira;4;5;2;3;1;none;1;NA;NA;-1;-1
+205;AlcÃ‹Â†cer do Sal;4;5;1;3;2;none;1;NA;-1;NA;-1
+206;Grandola;3;4;1;4;2;none;1;NA;-1;NA;-1
+207;Odemira;5;3;2;3;1;none;NA;1;1;NA;-1
+208;Santiago do Cacem;4;5;1;3;2;none;1;NA;-1;NA;-1
+209;Sines;5;4;2;3;1;PPD.PSD : { PCP.PEV };1;NA;1;-1;-1
+210;Aljustrel;5;3;2;3;1;none;1;NA;-1;NA;-1
+211;Almodavar;4;5;3;2;1;none;1;NA;-1;NA;-1
+212;Alvito;5;3;1;3;2;PS : { PCP.PEV };1;NA;1;NA;-1
+213;Barrancos;3;3;1;3;2;none;1;NA;-1;NA;-1
+214;Beja;5;3;1;3;2;none;1;NA;-1;NA;-1
+215;Castro Verde;5;3;1;3;2;none;1;NA;-1;NA;-1
+216;Cuba;5;3;1;3;2;none;1;NA;-1;NA;-1
+217;Ferreira do Alentejo;5;3;2;3;1;none;1;NA;-1;NA;-1
+218;Mertola;5;3;2;3;1;none;1;NA;-1;NA;-1
+219;Moura;5;3;1;3;2;none;1;NA;-1;NA;-1
+220;Ourique;5;2;4;2;1;none;1;NA;-1;NA;-1
+221;Serpa;4;5;1;3;2;none;1;NA;-1;NA;-1
+222;Vidigueira;5;3;1;3;2;none;1;NA;-1;NA;-1
+223;Almeirim;5;2;2;2;1;none;1;NA;-1;NA;-1
+224;AlpiarÃ‚Âça;4;4;1;3;2;none;1;NA;-1;NA;-1
+225;Azambuja;5;3;2;3;1;none;1;NA;-1;NA;-1
+226;Benavente;5;4;1;3;2;none;1;NA;NA;-1;-1
+227;Cartaxo;4;5;3;2;1;none;1;NA;NA;-1;-1
+228;Chamusca;5;3;2;3;1;none;1;NA;-1;NA;-1
+229;Coruche;5;4;2;3;1;none;1;NA;-1;NA;-1
+230;Golego;5;2;4;2;1;none;1;NA;-1;NA;-1
+231;Rio Maior;5;1;4;1;3;none;1;NA;-1;NA;-1
+232;Salvaterra de Magos;2;4;3;4;1;PCP.PEV : { BE };1;NA;-1;NA;-1
+233;Santarem;4;5;3;1;2;none;1;NA;NA;-1;-1
+234;Alter do ChÃ¢Â€Â o;5;4;3;1;2;none;1;NA;-1;NA;-1
+235;Arronches;4;4;3;1;2;none;1;1;NA;NA;-1
+236;Avis;4;4;1;3;2;none;1;NA;-1;NA;-1
+237;Campo Maior;4;5;2;3;1;none;1;NA;-1;NA;-1
+238;Castelo de Vide;4;4;3;1;2;none;1;NA;-1;NA;-1
+239;Crato;4;4;2;3;1;none;1;NA;-1;NA;-1
+240;Elvas;5;2;4;3;1;none;1;NA;-1;NA;-1
+241;Fronteira;5;4;3;1;2;none;1;NA;-1;NA;-1
+242;Gaviao;4;4;3;2;1;none;1;NA;-1;NA;-1
+243;Marvao;5;4;3;1;2;none;1;NA;1;NA;-1
+244;Monforte;5;3;1;3;2;none;1;NA;-1;NA;-1
+245;Nisa;5;3;2;3;1;none;1;NA;-1;NA;-1
+246;Ponte de Sor;4;5;2;3;1;none;1;NA;NA;-1;-1
+247;Portalegre;5;3;2;3;1;none;1;NA;-1;NA;-1
+248;Sousel;4;4;3;1;2;none;1;NA;-1;NA;-1
+249;Alandroal;4;5;1;3;2;none;1;NA;-1;NA;-1
+250;Arraiolos;5;4;1;3;2;none;1;NA;-1;NA;-1
+251;Borba;4;4;3;2;1;none;1;NA;-1;NA;-1
+252;Estremoz;5;4;2;3;1;none;1;1;NA;NA;-1
+253;Evora;5;3;1;3;2;none;1;NA;NA;-1;-1
+254;Montemor-o-Novo;5;4;1;3;2;none;1;NA;-1;NA;-1
+255;Mora;5;3;1;3;2;none;1;NA;-1;NA;-1
+256;Mourao;5;2;4;2;1;none;1;NA;-1;NA;-1
+257;Portel;4;3;2;4;1;none;1;1;-1;NA;NA
+258;Redondo;4;3;2;4;1;none;1;NA;-1;NA;-1
+259;Reguengos de Monsaraz;5;3;2;3;1;none;1;NA;-1;NA;-1
+260;Vendas Novas;4;4;2;3;1;none;1;NA;-1;NA;-1
+261;Viana do Alentejo;4;4;2;3;1;none;1;NA;-1;NA;-1
+262;Vila ViÃ‚Âçosa;5;3;1;3;2;none;1;NA;-1;NA;-1
+263;Albufeira;5;4;3;1;2;none;NA;1;NA;-1;1
+264;Alcoutim;4;4;3;2;1;none;1;NA;-1;NA;-1
+265;Aljezur;4;4;3;2;1;none;1;NA;-1;NA;-1
+266;Castro Marim;4;5;3;1;2;none;1;NA;-1;NA;-1
+267;Faro;5;1;4;1;3;none;1;NA;NA;-1;-1
+268;Lagoa;4;5;3;2;1;none;1;NA;NA;-1;-1
+269;Lagos;5;4;3;2;1;none;1;NA;NA;-1;-1
+270;Loul_;5;4;3;2;1;none;1;NA;-1;NA;-1
+271;Monchique;4;4;3;1;2;none;1;NA;-1;NA;-1
+272;Olhao;4;5;3;2;1;none;1;1;-1;NA;-1
+273;Portimao;4;2;5;3;1;PCP.PEV : { BE };1;NA;-1;NA;-1
+274;Sao BrÃ‹Â†s de Alportel;5;4;3;2;1;none;1;NA;-1;NA;-1
+275;Silves;4;5;1;2;3;none;1;NA;-1;NA;-1
+276;Tavira;5;2;4;2;1;none;1;NA;-1;NA;-1
+277;Vila do Bispo;4;4;3;2;1;none;1;NA;1;NA;-1
+278;Vila Real de Santo Antonio;4;5;3;1;2;none;1;NA;NA;-1;-1
+279;Vila do Porto;4;4;3;1;2;none;1;NA;1;-1;NA
+280;Lagoa [R.A.A.];5;3;4;2;1;none;1;NA;1;-1;NA
+281;Nordeste;3;3;3;2;1;none;1;NA;NA;-1;-1
+282;Ponta Delgada;3;5;4;1;2;none;1;NA;1;-1;NA
+283;PovoaÃ‚ÂçÃ¢Â€Â o;3;3;3;2;1;none;1;NA;1;-1;NA
+284;Ribeira Grande;3;5;4;1;2;none;1;NA;1;-1;NA
+285;Vila Franca do Campo;4;4;3;2;1;none;1;NA;1;NA;-1
+286;Angra do HeroÃƒÂçsmo;4;2;5;2;1;none;1;NA;1;-1;NA
+287;Vila da Praia da VitÃ¢Â€Â_ria;4;3;5;2;1;none;1;NA;1;-1;NA
+288;Santa Cruz da Graciosa;3;3;3;2;1;none;1;NA;1;-1;NA
+289;Calheta [R.A.A.];3;3;3;2;1;none;1;NA;1;-1;NA
+290;Velas;4;1;4;2;3;none;1;NA;NA;-1;-1
+291;Lajes do Pico;4;3;4;2;1;none;1;NA;1;-1;NA
+292;Madalena;5;3;4;1;2;none;1;NA;NA;-1;-1
+293;SÃ¢Â€Â o Roque do Pico;4;3;4;2;1;none;1;NA;1;-1;NA
+294;Horta;5;2;4;2;1;none;1;NA;NA;-1;-1
+295;Lajes das Flores;3;3;3;2;1;none;1;NA;NA;-1;-1
+296;Santa Cruz das Flores;4;2;4;2;1;none;1;NA;1;-1;NA
+297;Corvo;3;3;3;2;1;none;1;NA;1;-1;NA
+298;Calheta [R.A.M.];5;2;4;1;3;none;1;NA;1;-1;NA
+299;CÃ…Â mara de Lobos;4;2;3;1;4;PS : { PCP.PEV };1;NA;1;NA;-1
+300;Funchal;4;2;3;1;4;none;1;NA;1;-1;NA
+301;Machico;5;3;4;2;1;none;1;NA;-1;NA;-1
+302;Ponta do Sol;4;3;5;1;2;none;1;NA;1;-1;NA
+303;Porto Moniz;5;3;4;2;1;none;1;NA;-1;NA;-1
+304;Ribeira Brava;5;3;4;1;2;none;1;NA;-1;NA;-1
+305;Santa Cruz;3;3;2;1;3;none;1;NA;1;-1;NA
+306;Santana;5;1;4;2;3;none;1;NA;1;-1;NA
+307;Sao Vicente;2;4;3;1;4;none;1;NA;1;-1;NA
+308;Porto Santo;5;3;4;2;1;none;1;NA;1;-1;NA
